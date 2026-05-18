@@ -934,8 +934,16 @@ async function fbPullAll(){
     var fbUpdate=data.lastUpdate||0;
     var fbCleared=data.clearedAt||0;
     if(fbCleared>lastCleared){
-      localStorage.setItem('dp3_cleared', fbCleared.toString());
+      // Another device cleared data - clear this device too
+      localStorage.setItem('dp3_cleared',fbCleared.toString());
       lastCleared=fbCleared;
+      sales=[];credits=[];activity=[];prices={};
+      try{supplyData=[];}catch(e){}
+      stock={};PRODS.forEach(function(p){stock[p]=0;});
+      ['dp3_s','dp3_st','dp3_c','dp3_a','dp3_p','dp3_sup'].forEach(function(k){localStorage.removeItem(k);});
+      _lastSync=fbCleared;
+      changed=true;
+      if(curUser) setTimeout(function(){renderHome();toast('Data cleared by owner',2500);},200);
     }
     var dataIsNewer=fbUpdate>lastCleared;
     if(dataIsNewer && data.sales && data.sales.length>=(sales||[]).length){
@@ -1498,12 +1506,36 @@ function openDaySales(date){
         '<div><div style="font-size:13px;font-weight:600;color:var(--white)">'+s.items.map(function(i){return i.product.split(' ')[0];}).slice(0,2).join(', ')+(s.items.length>2?' +more':'')+'</div>'+
         '<div style="font-size:11px;color:var(--w30);margin-top:2px">'+s.time+' · '+s.payment+'</div></div>'+
         '<div style="text-align:right"><div style="font-size:15px;font-weight:700;color:var(--white)">'+fmt(s.revenue)+'</div>'+
-        '<div style="font-size:11px;color:'+(s.profit>=0?'var(--green)':'var(--red)')+'">'+fmt(s.profit)+' profit</div></div>'+
+        '<div style="font-size:11px;color:'+(s.profit>=0?'var(--green)':'var(--red)')+'>'+fmt(s.profit)+' profit</div></div>'+
       '</div></div>';
   });
   document.getElementById('editSaleContent').innerHTML=content;
-  document.getElementById('editSaleShareBtn').style.display='';
-  document.getElementById('editSaleDeleteBtn').style.display='';
+  if(daySales.length===1){
+    var s0=daySales[0];
+    document.getElementById('editSaleShareBtn').style.display='';
+    document.getElementById('editSaleDeleteBtn').style.display='';
+    document.getElementById('editSaleShareBtn').onclick=function(){
+      shareSpecificSale(s0.id); closeM('editSaleModal');
+    };
+    document.getElementById('editSaleDeleteBtn').onclick=function(){
+      appConfirm('Delete this sale?','Stock will be restored.',function(){
+        s0.items.forEach(function(i){stock[i.product]=(stock[i.product]||0)+i.qty;});
+        sales=sales.filter(function(x){return x.id!==s0.id;});
+        sv('dp3_s',sales);sv('dp3_st',stock);
+        if(_fbConnected&&_fbUrl){
+          fbXHR('PUT',_fbUrl+'/sales.json',sales);
+          fbXHR('PUT',_fbUrl+'/stock.json',sanitizeStock(stock));
+          fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+        }
+        logAct('sale','Deleted sale of '+fmt(s0.revenue));
+        closeM('editSaleModal');renderHome();renderProfit();
+        toast('Sale deleted');
+      });
+    };
+  } else {
+    document.getElementById('editSaleShareBtn').style.display='none';
+    document.getElementById('editSaleDeleteBtn').style.display='none';
+  }
   openM('editSaleModal');
   setTimeout(function(){
     document.querySelectorAll('.day-sale-item[data-dsid]').forEach(function(el){
@@ -1514,8 +1546,7 @@ function openDaySales(date){
       });
     });
   },100);
-}
-function openEditCredit(id){
+}function openEditCredit(id){
   var c=credits.find(function(x){return x.id==id;});if(!c)return;
   _editCreditId=id;
   document.getElementById('ecName').value=c.name;
@@ -1702,8 +1733,10 @@ function confirmClearData(){
       supplyData: supplyData||[],
       prices: sanitizePrices(prices||{}),
       staff: staff||[],
+      customProds: customProds||[],
       activity: (activity||[]).slice(0,200),
-      lastUpdate: Date.now()
+      lastUpdate: Date.now(),
+      clearedAt: parseInt(localStorage.getItem('dp3_cleared')||'0')
     };
     var r = await fbXHR('PUT', _fbUrl+'.json', bundle);
     if(r.ok){
