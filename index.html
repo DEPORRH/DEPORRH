@@ -174,6 +174,7 @@ var sItems=[], markId=null, stF='all', pTab='daily', aTab='all';
 var _editSaleId=null, _editCreditId=null, _editNYSId=null;
 var markId=null, markSupId=null;
 var _pendingSuperAction=null;
+var _lastSaleId=null;
 var _modalTransition=false;
 // Safety: reset transition flag after 2s max to prevent permanent tab freeze
 function setModalTransition(val){
@@ -381,6 +382,11 @@ function goPin(){
     document.getElementById('pinErr').textContent='';
   }
   show('ls2');hide('ls1');
+  // Auto-attempt biometric if available
+  var hasBio=localStorage.getItem('dp3_bio_'+(selStaff?selStaff.id:''));
+  var bioBtn=document.getElementById('biometricBtn');
+  if(bioBtn) bioBtn.style.display=hasBio?'flex':'none';
+  if(hasBio) setTimeout(tryBiometricLogin, 300);
 }
 function pk(k){if(pinBuf.length>=4)return;pinBuf+=k;updPinDots();if(pinBuf.length===4)setTimeout(checkPin,80);}
 function pdel(){pinBuf=pinBuf.slice(0,-1);updPinDots();document.getElementById('pinErr').textContent='';}
@@ -1099,6 +1105,7 @@ function completeSale(){
   if(pay==='Credit'){credits.push({id:Date.now(),name:cust,amount:rev,paid:0,date:today(),notes:valid.map(i=>i.product).join(', ')});sv('dp3_c',credits)}
   logAct('sale',`Sold ${fmt(rev)} (${valid.length} item${valid.length>1?'s':''}) via ${pay}`);
   toast(`✅ Sale saved! Profit: ${fmt(prof)}`);
+  _lastSaleId=sale.id;
   // Instant push to Firebase
   if(_fbConnected&&_fbUrl){
     fbXHR('PUT',_fbUrl+'/sales.json',sales);
@@ -1113,7 +1120,7 @@ function buildReceipt(s){
   if(!s) return null;
   var lines=[
     '🏗 *DE PORRH & BROS*',
-    '_Building Materials — Abuja_',
+    '_Building Materials — OKENE_',
     '━━━━━━━━━━━━━━━━━━',
     '📋 *Receipt*',
     'Date: '+fmtD(s.date)+' at '+s.time,
@@ -1151,7 +1158,8 @@ function openWALink(url){
   setTimeout(function(){document.body.removeChild(a);},300);
 }
 function shareReceiptWhatsApp(){
-  var s=sales[sales.length-1];
+  // Use the last completed sale id if available
+  var s=_lastSaleId?sales.find(function(x){return x.id===_lastSaleId;}):sales[sales.length-1];
   if(!s){toast('No sale to share');return;}
   openWhatsApp(buildReceipt(s));
 }
@@ -2250,6 +2258,146 @@ function renderSalesRecord(filter){
   if(!ld('dp3_s',[]).length) restoreFromBackup();
   var localStaff=ld('dp3_staff',[]);
   if(localStaff.length>0){
+
+// ── STOCK VALUE EYE TOGGLE ──
+var _stockHidden = false;
+function toggleStockVisibility(){
+  _stockHidden = !_stockHidden;
+  var valEl = document.getElementById('stockVal');
+  var eyeIcon = document.getElementById('stockEyeIcon');
+  if(_stockHidden){
+    valEl.setAttribute('data-realval', valEl.textContent);
+    valEl.textContent = '₦ ••••••';
+    valEl.style.letterSpacing = '2px';
+    // Change to eye-off icon
+    eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+    eyeIcon.setAttribute('stroke','var(--red)');
+  } else {
+    var real = valEl.getAttribute('data-realval');
+    if(real) valEl.textContent = real;
+    valEl.style.letterSpacing = '';
+    // Change back to eye-open icon
+    eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    eyeIcon.setAttribute('stroke','var(--w30)');
+  }
+}
+
+
+// ── BIOMETRIC LOGIN (Face ID / Touch ID / Fingerprint) ──
+var _biometricUserId = null;
+
+async function checkBiometricSupport(){
+  return window.PublicKeyCredential && 
+         typeof window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === 'function' &&
+         await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+}
+
+async function registerBiometric(userId, userName){
+  try{
+    var supported = await checkBiometricSupport();
+    if(!supported) return false;
+    
+    var challenge = new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    
+    var credential = await navigator.credentials.create({
+      publicKey: {
+        challenge: challenge,
+        rp: { name: 'DE PORRH & BROS', id: window.location.hostname || 'localhost' },
+        user: {
+          id: new TextEncoder().encode(userId),
+          name: userName,
+          displayName: userName
+        },
+        pubKeyCredParams: [{ alg: -7, type: 'public-key' }],
+        authenticatorSelection: {
+          authenticatorAttachment: 'platform',
+          userVerification: 'required'
+        },
+        timeout: 60000
+      }
+    });
+    
+    if(credential){
+      // Store credential id for this user
+      localStorage.setItem('dp3_bio_'+userId, btoa(String.fromCharCode(...new Uint8Array(credential.rawId))));
+      return true;
+    }
+    return false;
+  }catch(e){
+    return false;
+  }
+}
+
+async function authenticateBiometric(userId){
+  try{
+    var supported = await checkBiometricSupport();
+    if(!supported) return false;
+    
+    var storedId = localStorage.getItem('dp3_bio_'+userId);
+    if(!storedId) return false;
+    
+    var challenge = new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    
+    // Convert stored id back to ArrayBuffer
+    var credId = Uint8Array.from(atob(storedId), c => c.charCodeAt(0));
+    
+    var assertion = await navigator.credentials.get({
+      publicKey: {
+        challenge: challenge,
+        allowCredentials: [{ id: credId, type: 'public-key' }],
+        userVerification: 'required',
+        timeout: 60000
+      }
+    });
+    
+    return assertion !== null;
+  }catch(e){
+    return false;
+  }
+}
+
+async function tryBiometricLogin(){
+  if(!selStaff) return;
+  var hasBio = localStorage.getItem('dp3_bio_'+selStaff.id);
+  if(!hasBio) return;
+  
+  var ok = await authenticateBiometric(selStaff.id);
+  if(ok){
+    var lockKey = 'dp3_lock_'+selStaff.id;
+    localStorage.removeItem(lockKey);
+    curUser = selStaff;
+    enterApp();
+  } else {
+    toast('Biometric failed — enter your PIN', 2500);
+  }
+}
+
+async function offerBiometricSetup(){
+  var supported = await checkBiometricSupport();
+  if(!supported) return;
+  if(!curUser) return;
+  var already = localStorage.getItem('dp3_bio_'+curUser.id);
+  if(already) return; // already set up
+  
+  // Offer to set up after login
+  setTimeout(function(){
+    appConfirm(
+      '🔐 Enable Face ID / Touch ID?',
+      'Log in faster next time using biometrics instead of your PIN.',
+      async function(){
+        var ok = await registerBiometric(curUser.id, curUser.name);
+        if(ok){
+          toast('✅ Biometric login enabled! Use Face ID next time.', 3000);
+        } else {
+          toast('Could not enable biometric on this device.', 3000);
+        }
+      }
+    );
+  }, 2000);
+}
+
 // EXISTING DEVICE: show login immediately, sync in background
     staff=localStaff;
     initLock();
