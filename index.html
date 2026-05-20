@@ -382,18 +382,15 @@ function goPin(){
     document.getElementById('pinErr').textContent='';
   }
   show('ls2');hide('ls1');
-  // Show biometric button if supported
-  var bioBtn=document.getElementById('biometricBtn');
-  if(bioBtn){
-    var hasBio=localStorage.getItem('dp3_bio_'+(selStaff?selStaff.id:''));
+  // Show biometric button if device supports it
+  var _bioBtn=document.getElementById('biometricBtn');
+  if(_bioBtn){
     checkBiometricSupport().then(function(supported){
-      if(supported){
-        bioBtn.style.display='flex';
-        if(hasBio) setTimeout(tryBiometricLogin,300);
-      } else {
-        bioBtn.style.display='none';
+      if(_bioBtn) _bioBtn.style.display=supported?'flex':'none';
+      if(supported && selStaff && localStorage.getItem('dp3_bio_'+selStaff.id)){
+        setTimeout(tryBiometricLogin,400);
       }
-    }).catch(function(){bioBtn.style.display='none';});
+    }).catch(function(){if(_bioBtn) _bioBtn.style.display='none';});
   }
 }
 function pk(k){if(pinBuf.length>=4)return;pinBuf+=k;updPinDots();if(pinBuf.length===4)setTimeout(checkPin,80);}
@@ -634,6 +631,8 @@ function enterApp(){
       });
     }, 500);
   }
+
+  setTimeout(offerBiometricSetup,3500);
 }
 function lockApp(){
   curUser=null;selStaff=null;pinBuf='';
@@ -1167,7 +1166,9 @@ function openWALink(url){
 }
 function shareReceiptWhatsApp(){
   var s=null;
-  if(_lastSaleId) s=sales.find(function(x){return x.id===_lastSaleId||x.id==_lastSaleId;});
+  if(_lastSaleId!=null){
+    s=sales.find(function(x){return x.id==_lastSaleId;});
+  }
   if(!s) s=sales[sales.length-1];
   if(!s){toast('No sale to share');return;}
   openWhatsApp(buildReceipt(s));
@@ -1186,14 +1187,10 @@ function renderStock(){
   if(stF==='out') ps=ps.filter(function(p){return (stock[p]||0)===0;});
   var tv=allProds.reduce(function(s,p){return s+(stock[p]||0)*(prices[p]||0);},0);
   var sv_el=document.getElementById('stockVal');
-  var newVal=fmt(tv);
-  if(_stockHidden){
-    sv_el.setAttribute('data-realval',newVal);
-    if(!sv_el.textContent.includes('•')) sv_el.textContent='₦ ••••••';
-  } else {
-    sv_el.textContent=newVal;
-  }
+  sv_el.setAttribute('data-realval',fmt(tv));
+  if(!_stockHidden) sv_el.textContent=fmt(tv);
   document.getElementById('stockCnt').textContent=allProds.filter(function(p){return (stock[p]||0)>0;}).length;
+  setTimeout(applyStockVisibility,0);
   var el=document.getElementById('stockList');
   if(!ps.length){el.innerHTML='<div class="empty"><div class="et">No products match</div></div>';return;}
   // Sort: in-stock items first (by quantity desc), then out of stock
@@ -1490,7 +1487,7 @@ function openEditSale(id){
   var s=sales.find(function(x){return x.id==id;});
   if(!s)return;
   _editSaleId=id;
-  _lastSaleId=id;
+  _lastSaleId=isNaN(id)?id:Number(id);
   var content='<div style="background:var(--s3);border-radius:12px;padding:14px;margin-bottom:14px">'+
     '<div style="font-size:11px;color:var(--w30);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px">'+fmtD(s.date)+' at '+s.time+' · '+s.staffName+'</div>'+
     s.items.map(function(i){return'<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--w06)">'+
@@ -1539,7 +1536,9 @@ function openDaySales(date){
     var s0=daySales[0];
     document.getElementById('editSaleShareBtn').style.display='';
     document.getElementById('editSaleDeleteBtn').style.display='';
+    _lastSaleId=s0.id;
     document.getElementById('editSaleShareBtn').onclick=function(){
+      _lastSaleId=s0.id;
       shareSpecificSale(s0.id); closeM('editSaleModal');
     };
     document.getElementById('editSaleDeleteBtn').onclick=function(){
@@ -2085,26 +2084,30 @@ async function connectAndSync(){
 }
 
 // ── STOCK VALUE EYE TOGGLE ──
-var _stockHidden = false;
-function toggleStockVisibility(){
-  _stockHidden = !_stockHidden;
-  var valEl = document.getElementById('stockVal');
-  var eyeIcon = document.getElementById('stockEyeIcon');
+var _stockHidden = localStorage.getItem('dp3_stockHidden')==='1';
+function applyStockVisibility(){
+  var valEl=document.getElementById('stockVal');
+  var eyeIcon=document.getElementById('stockEyeIcon');
+  if(!valEl||!eyeIcon) return;
   if(_stockHidden){
-    valEl.setAttribute('data-realval', valEl.textContent);
-    valEl.textContent = '₦ ••••••';
-    valEl.style.letterSpacing = '2px';
-    // Change to eye-off icon
-    eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+    var cur=valEl.getAttribute('data-realval')||valEl.textContent;
+    if(!cur.includes('•')) valEl.setAttribute('data-realval',cur);
+    valEl.textContent='₦ ••••••';
+    valEl.style.letterSpacing='2px';
+    eyeIcon.innerHTML='<path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
     eyeIcon.setAttribute('stroke','var(--red)');
   } else {
-    var real = valEl.getAttribute('data-realval');
-    if(real) valEl.textContent = real;
-    valEl.style.letterSpacing = '';
-    // Change back to eye-open icon
-    eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+    var real=valEl.getAttribute('data-realval');
+    if(real) valEl.textContent=real;
+    valEl.style.letterSpacing='';
+    eyeIcon.innerHTML='<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
     eyeIcon.setAttribute('stroke','var(--w30)');
   }
+}
+function toggleStockVisibility(){
+  _stockHidden=!_stockHidden;
+  localStorage.setItem('dp3_stockHidden',_stockHidden?'1':'0');
+  applyStockVisibility();
 }
 
 
