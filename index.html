@@ -11,6 +11,7 @@ html,body{margin:0;padding:0;background:#060E1A;height:100dvh;width:100%;overflo
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 <meta charset="UTF-8">
+<meta name="version" content="1779356388">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -40,7 +41,7 @@ html,body{margin:0;padding:0;background:#060E1A;height:100dvh;width:100%;overflo
         Complete Sale
       </button><button class="btn bo mt8" onclick="clearSale()">Clear Sale</button></div><!-- STOCK --><div class="page" id="page-stock"><div class="sh"><h2>Stock</h2><div style="display:flex;gap:6px"><button class="btn bd bsm nav-own" onclick="openAddCustomProd()">+ Product</button><button class="btn bd bsm" onclick="openAddStock()">+ Stock</button></div></div><div class="sv-card" style="background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:14px;margin-bottom:12px"><div style="display:flex;justify-content:space-between"><div><div style="font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Stock Value <button id="stockEyeBtn" style="background:none;border:none;cursor:pointer;padding:6px 8px;color:var(--w30);vertical-align:middle;margin-left:2px;border-radius:6px;-webkit-tap-highlight-color:rgba(0,0,0,0);min-width:32px;min-height:32px;display:inline-flex;align-items:center;justify-content:center"><svg id="stockEyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="pointer-events:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div style="font-size:22px;font-weight:800;color:var(--gold2)" id="stockVal">₦0</div></div><div style="text-align:right"><div style="font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">In Stock</div><div style="font-size:22px;font-weight:800;color:var(--gold2)" id="stockCnt">0</div></div></div>
 </div>
-<input class="inp" id="stSrch" placeholder="Search product..." style="margin-bottom:10px" oninput="renderStock()"><div class="tabs"><button class="tab active" onclick="sfilt('all',this)">All</button><button class="tab" onclick="sfilt('low',this)">Low</button><button class="tab" onclick="sfilt('out',this)">Out</button></div><div class="card" id="stockList"></div></div><!-- CREDIT --><div class="page" id="page-credit"><div class="sh"><h2>Owes Me</h2><button class="btn bd bsm" onclick="openAddCredit()">+ Add</button></div><div class="card" style="background:var(--rd);border-color:rgba(231,76,60,.3);margin-bottom:12px"><div class="stat-lbl" style="color:var(--red)">Total Outstanding</div><div class="sv r" id="totOwed">₦0</div></div><div id="creditList"></div></div><!-- NOT YET SUPPLIED --><div class="page" id="page-supply"><div class="sh"><h2>Not Yet Supplied</h2><button class="btn bd bsm" onclick="openAddSupply()">+ Add</button></div><div class="card" style="background:var(--gg);border-color:rgba(201,168,76,.3);margin-bottom:12px"><div class="stat-lbl" style="color:var(--gold)">Pending Deliveries</div><div class="sv go" id="totPending">0</div></div><div id="supplyList"></div></div><!-- PROFIT --><div class="page" id="page-profit"><div class="sh"><h2>Profit Report</h2></div><div class="tabs"><button class="tab active" onclick="switchPT('daily',this)">Today</button><button class="tab" onclick="switchPT('weekly',this)">7 Days</button><button class="tab" onclick="switchPT('monthly',this)">Month</button><button class="tab" onclick="switchPT('alldays',this)">By Day</button></div><div class="sg2"><div class="stat"><div class="stat-lbl" id="ptLbl">Today</div><div class="sv" id="pRev">₦0</div><div class="mut">Revenue</div></div><div class="stat"><div class="stat-lbl">Net Profit</div><div class="sv g" id="pProf">₦0</div><div class="mut" id="pMarg">0%</div></div></div><div class="card" style="margin-bottom:10px"><div class="cl">📊 Last 7 Days</div><div id="salesChart"></div></div><div class="card" id="chartCard" style="display:none"><div class="cl">📊 Revenue Chart</div><div id="chartContainer" style="overflow-x:auto;padding:4px 0"></div></div><div class="card"><div class="cl" id="pLL">Breakdown</div><div id="profitList"></div></div><div class="card"><div class="cl">🏆 Top Products</div><div id="topProds"></div></div></div><!-- ACTIVITY --><div class="page" id="page-activity"><div class="sh"><h2>Activity Log</h2><span style="font-size:12px;color:var(--w30)">Staff actions</span></div><div class="tabs"><button class="tab active" onclick="switchAT('all',this)">All</button><button class="tab" onclick="switchAT('sale',this)">Sales</button><button class="tab" onclick="switchAT('stock',this)">Stock</button><button class="tab" onclick="switchAT('credit',this)">Credits</button><button class="tab" onclick="switchAT('deleted',this)">🗑 Deleted</button><button class="tab" onclick="switchAT('security',this)">🔐 Security</button></div><div class="card" id="actLog"></div></div></div><nav class="nav"><button class="nb active" id="nav-home" onclick="showPage('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</button><button class="nb" id="nav-sell" onclick="showPage('page-sell')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sell</button><button class="nb" id="nav-stock" onclick="showPage('page-stock')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Stock</button><button class="nb" id="nav-credit" onclick="showPage('page-credit')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Credit</button><button class="nb" id="nav-supply" onclick="showPage('page-supply');renderSupply()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Supply</button><button class="nb hidden nav-own nav-btn-owner" id="nav-profit" onclick="showPage('page-profit');renderProfit()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Profit</button><button class="nb hidden nav-own nav-btn-owner" id="nav-activity" onclick="showPage('page-activity');renderActivity()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Log</button></nav>
+<input class="inp" id="stSrch" placeholder="Search product..." style="margin-bottom:10px" oninput="renderStock()"><div class="tabs"><button class="tab active" onclick="sfilt('all',this)">All</button><button class="tab" onclick="sfilt('low',this)">Low</button><button class="tab" onclick="sfilt('out',this)">Out</button></div><div class="card" id="stockList"></div></div><!-- CREDIT --><div class="page" id="page-credit"><div class="sh"><h2>Owes Me</h2><button class="btn bd bsm" onclick="openAddCredit()">+ Add</button></div><div class="card" style="background:var(--rd);border-color:rgba(231,76,60,.3);margin-bottom:12px"><div class="stat-lbl" style="color:var(--red)">Total Outstanding</div><div class="sv r" id="totOwed">₦0</div></div><div id="creditList"></div></div><!-- NOT YET SUPPLIED --><div class="page" id="page-supply"><div class="sh"><h2>Not Yet Supplied</h2><button class="btn bd bsm" onclick="openAddSupply()">+ Add</button></div><div class="card" style="background:var(--gg);border-color:rgba(201,168,76,.3);margin-bottom:12px"><div class="stat-lbl" style="color:var(--gold)">Pending Deliveries</div><div class="sv go" id="totPending">0</div></div><div id="supplyList"></div></div><!-- PROFIT --><div class="page" id="page-profit"><div class="sh"><h2>Profit Report</h2></div><div class="tabs"><button class="tab active" onclick="switchPT('daily',this)">Today</button><button class="tab" onclick="switchPT('weekly',this)">7 Days</button><button class="tab" onclick="switchPT('monthly',this)">Month</button><button class="tab" onclick="switchPT('alldays',this)">By Day</button></div><div class="sg2"><div class="stat"><div class="stat-lbl" id="ptLbl">Today</div><div class="sv" id="pRev">₦0</div><div class="mut">Revenue</div></div><div class="stat"><div class="stat-lbl">Net Profit</div><div class="sv g" id="pProf">₦0</div><div class="mut" id="pMarg">0%</div></div></div><div class="card" style="margin-bottom:10px"><div class="cl">📊 Last 7 Days</div><div id="salesChart"></div></div><div class="card"><div class="cl" id="pLL">Breakdown</div><div id="profitList"></div></div><div class="card"><div class="cl">🏆 Top Products</div><div id="topProds"></div></div></div><!-- ACTIVITY --><div class="page" id="page-activity"><div class="sh"><h2>Activity Log</h2><span style="font-size:12px;color:var(--w30)">Staff actions</span></div><div class="tabs"><button class="tab active" onclick="switchAT('all',this)">All</button><button class="tab" onclick="switchAT('sale',this)">Sales</button><button class="tab" onclick="switchAT('stock',this)">Stock</button><button class="tab" onclick="switchAT('credit',this)">Credits</button><button class="tab" onclick="switchAT('deleted',this)">🗑 Deleted</button><button class="tab" onclick="switchAT('security',this)">🔐 Security</button></div><div class="card" id="actLog"></div></div></div><nav class="nav"><button class="nb active" id="nav-home" onclick="showPage('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</button><button class="nb" id="nav-sell" onclick="showPage('page-sell')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Sell</button><button class="nb" id="nav-stock" onclick="showPage('page-stock')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Stock</button><button class="nb" id="nav-credit" onclick="showPage('page-credit')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Credit</button><button class="nb" id="nav-supply" onclick="showPage('page-supply');renderSupply()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Supply</button><button class="nb hidden nav-own nav-btn-owner" id="nav-profit" onclick="showPage('page-profit');renderProfit()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Profit</button><button class="nb hidden nav-own nav-btn-owner" id="nav-activity" onclick="showPage('page-activity');renderActivity()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Log</button></nav>
 </div><!-- SALE SUCCESS -->
 <div id="saleSuccess" style="display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px"><div class="suc-icon">🎉</div><div class="suc-title">Sale Recorded!</div><div id="suc-rev" class="suc-amt">₦0</div><div id="suc-prof" class="suc-prof">+₦0 profit</div><button class="btn bp" style="max-width:260px" onclick="dismissSuccess()">Done ✓</button><button class="btn bd mt8" style="max-width:260px" onclick="shareReceiptWhatsApp()">📲 Share Receipt via WhatsApp</button><button class="btn bo mt8" style="max-width:260px" onclick="dismissSuccess();showPage('page-sell')">Record Another Sale</button>
 </div><!-- MODALS -->
@@ -955,40 +956,76 @@ var _biometricUserId=null;async function checkBiometricSupport(){
  if(!window.PublicKeyCredential) return false; if(typeof window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable!=='function') return false; return await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();}catch(e){return false;}
 }
 async function registerBiometric(userId,userName){
- try{
- var supported=await checkBiometricSupport(); if(!supported) return false; var challenge=new Uint8Array(32); window.crypto.getRandomValues(challenge); var credential=await navigator.credentials.create({
- publicKey:{
- challenge:challenge,
- rp:{name:'DE PORRH & BROS',id:window.location.hostname||'localhost'},
- user:{
- id:new TextEncoder().encode(userId),
- name:userName,
- displayName:userName
-},
- pubKeyCredParams:[{alg:-7,type:'public-key'}],
- authenticatorSelection:{
- authenticatorAttachment:'platform',
- userVerification:'required'
-},
- timeout:60000
-}
-}); if(credential){
- localStorage.setItem('dp3_bio_'+userId,btoa(String.fromCharCode(...new Uint8Array(credential.rawId)))); return true;}
- return false;}catch(e){
- return false;}
+  try{
+    var supported=await checkBiometricSupport();
+    if(!supported) return false;
+    var challenge=new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    // Get correct rpId - must match actual domain exactly
+    var rpId=window.location.hostname;
+    if(!rpId||rpId==='localhost'||rpId===''){
+      // Can't use biometrics without proper domain
+      toast('Face ID requires app to be installed on Home Screen',3000);
+      return false;
+    }
+    var credential=await navigator.credentials.create({
+      publicKey:{
+        challenge:challenge,
+        rp:{name:'DE PORRH & BROS',id:rpId},
+        user:{
+          id:new TextEncoder().encode(userId),
+          name:userName,
+          displayName:userName
+        },
+        pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
+        authenticatorSelection:{
+          authenticatorAttachment:'platform',
+          userVerification:'preferred',
+          residentKey:'discouraged',
+          requireResidentKey:false
+        },
+        excludeCredentials:[],
+        timeout:30000
+      }
+    });
+    if(credential){
+      localStorage.setItem('dp3_bio_'+userId,btoa(String.fromCharCode(...new Uint8Array(credential.rawId))));
+      localStorage.setItem('dp3_bio_rpid_'+userId,rpId);
+      return true;
+    }
+    return false;
+  }catch(e){
+    if(e.name==='NotAllowedError') toast('Face ID cancelled',2000);
+    else if(e.name==='InvalidStateError') toast('Face ID already registered',2000);
+    else toast('Face ID not available on this device',2500);
+    return false;
+  }
 }
 async function authenticateBiometric(userId){
- try{
- var supported=await checkBiometricSupport(); if(!supported) return false; var storedId=localStorage.getItem('dp3_bio_'+userId); if(!storedId) return false; var challenge=new Uint8Array(32); window.crypto.getRandomValues(challenge); var credId=Uint8Array.from(atob(storedId),c => c.charCodeAt(0)); var assertion=await navigator.credentials.get({
- publicKey:{
- challenge:challenge,
- allowCredentials:[{id:credId,type:'public-key'}],
- userVerification:'required',
- timeout:60000
-}
-}); if(assertion!==null){return true;}
+  try{
+    var storedId=localStorage.getItem('dp3_bio_'+userId);
+    if(!storedId) return false;
+    // Use the rpId that was used during registration
+    var rpId=localStorage.getItem('dp3_bio_rpid_'+userId)||window.location.hostname;
+    if(!rpId||rpId==='localhost') return false;
+    var challenge=new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    var credId=Uint8Array.from(atob(storedId),function(c){return c.charCodeAt(0);});
+    var assertion=await navigator.credentials.get({
+      publicKey:{
+        challenge:challenge,
+        rpId:rpId,
+        allowCredentials:[{id:credId,type:'public-key',transports:['internal']}],
+        userVerification:'preferred',
+        timeout:30000
+      }
+    });
+    if(assertion) return true;
     return false;
-  }catch(e){return false;}
+  }catch(e){
+    if(e.name==='NotAllowedError') toast('Face ID cancelled',2000);
+    return false;
+  }
 }
 async function tryBiometricLogin(){
  if(!selStaff) return; var hasBio=localStorage.getItem('dp3_bio_'+selStaff.id); if(!hasBio){
@@ -1102,61 +1139,75 @@ function openCustomerDb(){
 
 function renderCustomerDb(query){
   var el=document.getElementById('custDbList');
-  // Build customer map from sales + credits
   var customers={};
   // From sales
   sales.forEach(function(s){
     if(s.customer&&s.customer.trim()){
       var name=s.customer.trim();
-      if(!customers[name]) customers[name]={name:name,totalSpend:0,visits:0,lastDate:'',items:[],credits:[]};
+      if(!customers[name]) customers[name]={name:name,totalSpend:0,visits:0,lastDate:'',credits:[]};
       customers[name].totalSpend+=s.revenue||0;
       customers[name].visits++;
       if(!customers[name].lastDate||s.date>customers[name].lastDate) customers[name].lastDate=s.date;
-      s.items.forEach(function(i){ customers[name].items.push({product:i.product,qty:i.qty,date:s.date}); });
     }
   });
   // From credits
   credits.forEach(function(c){
     var name=c.name&&c.name.trim();
     if(!name) return;
-    if(!customers[name]) customers[name]={name:name,totalSpend:0,visits:0,lastDate:'',items:[],credits:[]};
+    if(!customers[name]) customers[name]={name:name,totalSpend:0,visits:0,lastDate:'',credits:[]};
     customers[name].credits.push({amount:c.amount,paid:c.paid||0,date:c.date});
     if(!customers[name].lastDate||c.date>customers[name].lastDate) customers[name].lastDate=c.date;
+  });
+  // Include manually saved contacts
+  Object.keys(_custContacts||{}).forEach(function(name){
+    if(!customers[name]) customers[name]={name:name,totalSpend:0,visits:0,lastDate:'',credits:[]};
   });
 
   var list=Object.values(customers);
   if(query) list=list.filter(function(c){return c.name.toLowerCase().includes(query.toLowerCase());});
-  list.sort(function(a,b){return b.totalSpend-a.totalSpend;});
+  list.sort(function(a,b){
+    if(b.totalSpend!==a.totalSpend) return b.totalSpend-a.totalSpend;
+    return a.name.localeCompare(b.name);
+  });
 
   if(!list.length){
-    el.innerHTML='<div class="empty"><div class="ei">👥</div><div class="et">'+(query?'No customers found':'No customer data yet')+'</div></div>';
+    el.innerHTML='<div class="empty"><div class="ei">👥</div><div class="et">'+(query?'No customers found':'No customers yet — tap + Add to create one')+'</div></div>';
+    var srch=document.getElementById('custDbSearch');
+    if(srch) srch.oninput=function(){renderCustomerDb(this.value);};
     return;
   }
 
   el.innerHTML=list.map(function(c){
+    var contact=_custContacts[c.name]||{};
     var totalOwed=c.credits.reduce(function(s,cr){return s+(cr.amount-(cr.paid||0));},0);
-    var hasDebt=totalOwed>0;
-    return '<div data-custname="'+encodeURIComponent(c.name)+'" style="cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--w06)"display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--w06);cursor:pointer">'+
-      '<div>'+
-        '<div style="font-size:14px;font-weight:600;color:var(--w)">'+c.name+'</div>'+
-        '<div style="font-size:11px;color:var(--w30);margin-top:2px">'+
-          c.visits+' visit'+(c.visits>1?'s':'')+
-          (c.lastDate?' · Last: '+fmtD(c.lastDate):'')+
-          (hasDebt?' · <span style="color:var(--red)">Owes: '+fmt(totalOwed)+'</span>':'')+
+    return '<div data-custname="'+encodeURIComponent(c.name)+'" style="padding:12px 0;border-bottom:1px solid var(--w06);cursor:pointer">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center">'+
+        '<div style="flex:1;min-width:0">'+
+          '<div style="font-size:14px;font-weight:600;color:var(--w)">'+c.name+'</div>'+
+          '<div style="font-size:11px;color:var(--w30);margin-top:2px">'+
+            (contact.phone?'📞 '+contact.phone+' · ':'')+
+            c.visits+' visit'+(c.visits>1?'s':'')+
+            (c.lastDate?' · '+fmtD(c.lastDate):'')+
+          '</div>'+
+          (totalOwed>0?'<div style="font-size:11px;color:var(--red);margin-top:2px">Owes '+fmt(totalOwed)+'</div>':'')+
         '</div>'+
-      '</div>'+
-      '<div style="text-align:right">'+
-        '<div style="font-size:15px;font-weight:800;color:var(--gold2)">'+fmt(c.totalSpend)+'</div>'+
-        '<div style="font-size:10px;color:var(--w30)">total spend</div>'+
+        '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;margin-left:8px">'+
+          '<div style="font-size:15px;font-weight:800;color:var(--gold2)">'+fmt(c.totalSpend)+'</div>'+
+          '<div style="display:flex;gap:4px">'+
+            (contact.phone?'<a href="tel:'+contact.phone+'" data-callbtn="1" style="font-size:10px;color:#27ae60;background:rgba(39,174,96,.15);border:1px solid rgba(39,174,96,.3);border-radius:6px;padding:3px 8px;text-decoration:none;cursor:pointer">📞</a>':'')+
+            '<button data-editcust="'+encodeURIComponent(c.name)+'" style="font-size:10px;color:var(--gold);background:none;border:1px solid rgba(201,168,76,.3);border-radius:6px;padding:3px 8px;cursor:pointer">Edit</button>'+
+          '</div>'+
+        '</div>'+
       '</div>'+
     '</div>';
   }).join('');
 
-  // Search handler
   var srch=document.getElementById('custDbSearch');
   if(srch) srch.oninput=function(){renderCustomerDb(this.value);};
+
   el.querySelectorAll('[data-custname]').forEach(function(row){
-    row.addEventListener('click',function(){
+    row.addEventListener('click',function(e){
+      if(e.target.closest('[data-callbtn]')||e.target.closest('[data-editcust]')) return;
       openCustomerProfile(this.getAttribute('data-custname'));
     });
   });
@@ -1182,7 +1233,7 @@ function openCustomerProfile(encodedName){
       '<div style="font-size:18px;font-weight:800;color:var(--gold2)">'+name+'</div>'+
       '<button data-editprofile="'+encodeURIComponent(name)+'" style="font-size:11px;color:var(--gold);background:none;border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:4px 10px;cursor:pointer">✏️ Edit</button>'+
     '</div>'+
-    (contact.phone?'<a href="tel:'+contact.phone+'" style="display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:13px;text-decoration:none;margin-bottom:8px">📞 '+contact.phone+' — Tap to Call</a><br>':'')+
+    (contact.phone?'<a href="tel:'+contact.phone+'" style="display:flex;align-items:center;gap:10px;background:rgba(39,174,96,.15);border:1px solid rgba(39,174,96,.3);border-radius:12px;padding:12px 14px;margin-bottom:10px;text-decoration:none"><div style="font-size:22px">📞</div><div><div style="font-size:15px;font-weight:700;color:var(--green)">'+contact.phone+'</div><div style="font-size:11px;color:var(--w30)">Tap to call</div></div></a>':'')+
     (contact.notes?'<div style="font-size:12px;color:var(--w30);margin-bottom:8px">'+contact.notes+'</div>':'')+
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'+
       '<div style="background:var(--s2);border-radius:10px;padding:10px;text-align:center">'+
@@ -1479,35 +1530,7 @@ window.addEventListener('online',function(){
 });
 
 // ── PROFIT CHART ──
-function renderChart(data){
-  var card=document.getElementById('chartCard');
-  var container=document.getElementById('chartContainer');
-  if(!card||!container) return;
-  if(!data||!data.length){card.style.display='none';return;}
-  card.style.display='';
-
-  var maxVal=Math.max.apply(null,data.map(function(d){return d.rev||0;}));
-  if(maxVal===0){card.style.display='none';return;}
-
-  var barW=Math.max(28,Math.min(48,Math.floor(300/data.length)));
-  var chartW=Math.max(300,data.length*(barW+6));
-  var chartH=120;
-
-  var bars=data.map(function(d,i){
-    var h=maxVal>0?Math.round((d.rev/maxVal)*chartH):0;
-    var x=i*(barW+6);
-    var isProfit=d.prof>=0;
-    var label=d.label||'';
-    if(label.length>4) label=label.substring(label.length-3);
-    return '<g>'+
-      '<rect x="'+x+'" y="'+(chartH-h)+'" width="'+barW+'" height="'+h+'" rx="4" fill="'+(isProfit?'rgba(201,168,76,.8)':'rgba(231,76,60,.6)')+'"/>'+
-      '<text x="'+(x+barW/2)+'" y="'+(chartH+12)+'" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="8">'+label+'</text>'+
-      '<text x="'+(x+barW/2)+'" y="'+(chartH-h-3)+'" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="7">'+fmt(d.rev).replace('₦','')+'</text>'+
-    '</g>';
-  }).join('');
-
-  container.innerHTML='<svg width="'+chartW+'" height="'+(chartH+20)+'" viewBox="0 0 '+chartW+' '+(chartH+20)+'" xmlns="http://www.w3.org/2000/svg" style="display:block">'+bars+'</svg>';
-}
+function renderChart(data){}
 
 // ── CUSTOMER CONTACTS DB ──
 var _custContacts=JSON.parse(localStorage.getItem('dp3_custcontacts')||'{}');
@@ -1539,10 +1562,59 @@ function saveCustomer(){
   _custContacts[name]={phone:phone,notes:notes,updatedAt:Date.now()};
   saveCustomerContacts();
   closeM('addCustomerModal');
-  setTimeout(function(){renderCustomerDb('');},300);
-  toast('✅ Customer saved');
+  setTimeout(function(){
+    renderCustomerDb('');
+    // Show the saved customer
+    var srch=document.getElementById('custDbSearch');
+    if(srch) srch.value='';
+  },400);
+  toast('✅ Customer saved — find them in the list');
 }
 
+
+
+// ── CUSTOMER EXPORT ──
+function exportCustomerContacts(){
+  // Build full customer list
+  var allNames={};
+  sales.forEach(function(s){ if(s.customer&&s.customer.trim()) allNames[s.customer.trim()]=1; });
+  credits.forEach(function(c){ if(c.name&&c.name.trim()) allNames[c.name.trim()]=1; });
+  Object.keys(_custContacts||{}).forEach(function(n){ allNames[n]=1; });
+
+  var list=Object.keys(allNames).sort().map(function(name){
+    var c=_custContacts[name]||{};
+    return {name:name, phone:c.phone||'', notes:c.notes||''};
+  });
+
+  if(!list.length){ toast('No customers to export'); return; }
+
+  var withPhone=list.filter(function(c){return c.phone;});
+
+  // Build CSV
+  var csv='Name,Phone Number,Notes\n';
+  list.forEach(function(c){
+    csv+=c.name+','+( c.phone||'')+','+(c.notes||'')+'\n';
+  });
+
+  // Try CSV download
+  try{
+    var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download='customers_'+today()+'.csv';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},300);
+    toast('✅ Downloaded — '+list.length+' customers ('+withPhone.length+' with phone)',3000);
+  }catch(e){
+    // Fallback: share as text
+    var txt='*DE PORRH & BROS Customers*\n\n';
+    withPhone.forEach(function(c){ txt+=c.name+': '+c.phone+'\n'; });
+    if(withPhone.length<list.length) txt+='\n_'+(list.length-withPhone.length)+' customers without phone number_';
+    openWALink('https://wa.me/?text='+encodeURIComponent(txt));
+  }
+}
 
 ;</script>
 </body>
