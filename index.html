@@ -31,7 +31,8 @@ html,body{margin:0;padding:0;background:#060E1A;height:100dvh;width:100%;overflo
 <div style="color:#C9A84C;font-size:13px;margin-top:12px;letter-spacing:1px">DE PORRH & BROS</div>
 </div>
 <!-- LOCK SCREEN -->
-<div id="lockScreen"><div class="lock-logo">DE PORRH <span class="ag">&</span> BROS</div><div class="lock-sub">Building Materials</div><div class="lock-div"></div><div id="ls1" style="width:100%;display:flex;flex-direction:column;align-items:center"><div class="lock-q">Who is using the app?</div><div class="sg" id="staffGrid"></div><button class="btn bp" style="max-width:260px" onclick="goPin()">Continue →</button></div><div id="ls2" style="display:none;flex-direction:column;align-items:center;width:100%"><div class="lock-q" id="pinQ">Enter your PIN</div><div class="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div><div class="kpad"><button class="kkey" onclick="pk('1')">1</button><button class="kkey" onclick="pk('2')">2</button><button class="kkey" onclick="pk('3')">3</button><button class="kkey" onclick="pk('4')">4</button><button class="kkey" onclick="pk('5')">5</button><button class="kkey" onclick="pk('6')">6</button><button class="kkey" onclick="pk('7')">7</button><button class="kkey" onclick="pk('8')">8</button><button class="kkey" onclick="pk('9')">9</button><button class="kkey kz" onclick="pk('0')">0</button><button class="kkey kdel" onclick="pdel()">⌫</button></div><div class="kerr" id="pinErr"></div><button id="biometricBtn" style="display:none;width:100%;max-width:260px;margin:0 auto 8px;padding:14px 16px;border-radius:14px;border:1px solid rgba(201,168,76,.3);background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));color:var(--gold2);cursor:pointer;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:600;-webkit-tap-highlight-color:rgba(0,0,0,0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18" style="pointer-events:none"><path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg> Use Face ID / Touch ID</button><button class="kback" onclick="backToStaff()">← Back</button></div><div id="ls3" style="display:none;flex-direction:column;align-items:center;width:100%"><div id="setupCard" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:12px 16px;margin-bottom:14px;max-width:300px;text-align:center;width:100%"><div style="font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:.5px;margin-bottom:6px">🔐 FIRST TIME SETUP</div><div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.7" id="setupHint">Enter the 4-digit business access code to get started.</div></div><div class="lock-q" id="setupQ">Step 1 of 3 — Access Code</div><div class="dots"><div class="dot" id="s0"></div><div class="dot" id="s1"></div><div class="dot" id="s2"></div><div class="dot" id="s3"></div></div><div class="kpad"><button class="kkey" onclick="sk('1')">1</button><button class="kkey" onclick="sk('2')">2</button><button class="kkey" onclick="sk('3')">3</button><button class="kkey" onclick="sk('4')">4</button><button class="kkey" onclick="sk('5')">5</button><button class="kkey" onclick="sk('6')">6</button><button class="kkey" onclick="sk('7')">7</button><button class="kkey" onclick="sk('8')">8</button><button class="kkey" onclick="sk('9')">9</button><button class="kkey kz" onclick="sk('0')">0</button><button class="kkey kdel" onclick="sdel()">⌫</button></div><div class="kerr" id="setupErr"></div><div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:16px;text-align:center">Contact the business owner for access</div></div>
+<div id="lockScreen"><div class="lock-logo">DE PORRH <span class="ag">&</span> BROS</div><div class="lock-sub">Building Materials</div><div class="lock-div"></div><div id="ls1" style="width:100%;display:flex;flex-direction:column;align-items:center"><div class="lock-q">Who is using the app?</div><div class="sg" id="staffGrid"></div><button class="btn bp" style="max-width:260px" onclick="goPin()">Continue →</button></div><div id="ls2" style="display:none;flex-direction:column;align-items:center;width:100%"><div class="lock-q" id="pinQ">Enter your PIN</div><div class="dots"><div class="dot" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div><div class="kpad"><button class="kkey" onclick="pk('1')">1</button><button class="kkey" onclick="pk('2')">2</button><button class="kkey" onclick="pk('3')">3</button><button class="kkey" onclick="pk('4')">4</button><button class="kkey" onclick="pk('5')">5</button><button class="kkey" onclick="pk('6')">6</button><button class="kkey" onclick="pk('7')">7</button><button class="kkey" onclick="pk('8')">8</button><button class="kkey" onclick="pk('9')">9</button><button class="kkey kz" onclick="pk('0')">0</button><button class="kkey kdel" onclick="pdel()">⌫</button></div><div class="kerr" id="pinErr"></div><button <button id="biometricBtn" style="display:none;width:100%;max-width:260px;margin:0 auto 8px;padding:13px;border-radius:14px;border:1px solid rgba(201,168,76,.3);background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.04));color:var(--gold2);cursor:pointer;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600">🔐 Use Face ID</button>
+<button class="kback" onclick="backToStaff()">← Back</button></div><div id="ls3" style="display:none;flex-direction:column;align-items:center;width:100%"><div id="setupCard" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:12px 16px;margin-bottom:14px;max-width:300px;text-align:center;width:100%"><div style="font-size:12px;color:var(--gold2);font-weight:700;letter-spacing:.5px;margin-bottom:6px">🔐 FIRST TIME SETUP</div><div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.7" id="setupHint">Enter the 4-digit business access code to get started.</div></div><div class="lock-q" id="setupQ">Step 1 of 3 — Access Code</div><div class="dots"><div class="dot" id="s0"></div><div class="dot" id="s1"></div><div class="dot" id="s2"></div><div class="dot" id="s3"></div></div><div class="kpad"><button class="kkey" onclick="sk('1')">1</button><button class="kkey" onclick="sk('2')">2</button><button class="kkey" onclick="sk('3')">3</button><button class="kkey" onclick="sk('4')">4</button><button class="kkey" onclick="sk('5')">5</button><button class="kkey" onclick="sk('6')">6</button><button class="kkey" onclick="sk('7')">7</button><button class="kkey" onclick="sk('8')">8</button><button class="kkey" onclick="sk('9')">9</button><button class="kkey kz" onclick="sk('0')">0</button><button class="kkey kdel" onclick="sdel()">⌫</button></div><div class="kerr" id="setupErr"></div><div style="font-size:11px;color:rgba(255,255,255,.25);margin-top:16px;text-align:center">Contact the business owner for access</div></div>
 </div><!-- end lockScreen --><!-- APP SHELL -->
 <div id="app" style="display:none;flex-direction:column;height:100vh"><div class="topbar"><div class="tb-brand-wrap"><div class="tb-brand">DE PORRH <span class="ag">&</span> BROS</div><span id="syncDot" style="font-size:12px;cursor:pointer;padding:4px" title="Tap to sync" onclick="manualSync()">⚪</span></div><div class="tb-user" onclick="openM('settingsModal')"><div class="tb-uname" id="topName"></div><div class="av" id="topAv"></div></div></div><div class="scroll-area" id="scrollArea"><div class="toast" id="toast"></div><!-- HOME --><div class="page active" id="page-home"><div class="sg2"><div class="stat"><div class="stat-lbl">Revenue Today</div><div class="sv" id="s-rev">₦0</div></div><div class="stat"><div class="stat-lbl">Profit Today</div><div class="sv g" id="s-prof">₦0</div></div><div class="stat"><div class="stat-lbl">Sales Today</div><div class="sv go" id="s-cnt">0</div></div><div class="stat"><div class="stat-lbl">Owes You</div><div class="sv r" id="s-owed">₦0</div></div></div><div id="pendingSupplyCard" style="display:none;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:12px;padding:11px 14px;margin-bottom:12px;font-size:13px;color:var(--gold2);cursor:pointer" onclick="showPage('page-supply')">
         🚚 <span id="homePending">0 orders</span> not yet delivered — tap to view
@@ -95,11 +96,105 @@ html,body{margin:0;padding:0;background:#060E1A;height:100dvh;width:100%;overflo
 </div></div><div class="mo" id="addStockModal"><div class="mw"><div class="mh"></div><div class="mt">Add Stock Received</div><div class="ig"><label class="lbl">Product</label><select class="sel" id="sProd"></select></div><div class="ig"><label class="lbl">Qty Received</label><input class="inp" id="sQty" type="number" placeholder="How many units?" min="1" inputmode="numeric"></div><div class="ig"><label class="lbl">Buy Price / Unit (₦)</label><input class="inp" id="sBuy" type="number" placeholder="Your cost price" inputmode="decimal"></div><button class="btn bp" onclick="saveStock()">Save Stock</button><button class="btn bo mt8" onclick="closeM('addStockModal')">Cancel</button>
 </div></div><div class="mo" id="addCreditModal"><div class="mw"><div class="mh"></div><div class="mt">Record Credit Sale</div><div class="ig"><label class="lbl">Customer Name</label><input class="inp" id="cName" type="text" placeholder="Full name"></div><div class="ig"><label class="lbl">Amount Owed (₦)</label><input class="inp" id="cAmt" type="number" placeholder="0" inputmode="decimal"></div><div class="ig"><label class="lbl">What they bought</label><input class="inp" id="cNotes" type="text" placeholder="e.g. Zinc, Digger..."></div><button class="btn bp" onclick="saveCredit()">Save</button><button class="btn bo mt8" onclick="closeM('addCreditModal')">Cancel</button>
 </div></div><div class="mo" id="markPaidModal"><div class="mw"><div class="mh"></div><div class="mt">Record Payment</div><div class="msub" id="mpInfo"></div><div class="ig"><label class="lbl">Amount Paid (₦)</label><input class="inp" id="mAmt" type="number" inputmode="decimal"></div><button class="btn bg" onclick="savePayment()">Confirm Payment</button><button class="btn bo mt8" onclick="closeM('markPaidModal')">Cancel</button>
-</div></div><div class="mo" id="markSuppliedModal"><div class="mw"><div class="mh"></div><div class="mt">Mark as Supplied</div><div class="msub" id="msInfo"></div><button class="btn bg" onclick="markSupplied()">Confirm Supplied ✓</button><button class="btn bo mt8" onclick="closeM('markSuppliedModal')">Cancel</button>
-</div></div><div class="mo" id="addSupplyModal"><div class="mw"><div class="mh"></div><div class="mt">Not Yet Supplied</div><div class="msub">Customer has paid — goods not yet delivered.</div><div class="ig"><label class="lbl">Customer Name</label><input class="inp" id="spName" type="text" placeholder="Full name"></div><div class="ig"><label class="lbl">Amount Paid (₦)</label><input class="inp" id="spAmt" type="number" placeholder="0" inputmode="decimal"></div><div class="ig"><label class="lbl">What they ordered</label><input class="inp" id="spItems" type="text" placeholder="e.g. 10 bags Zinc (0.15)"></div><div class="ig"><label class="lbl">Phone (optional)</label><input class="inp" id="spPhone" type="tel" placeholder="08012345678"></div><button class="btn bp" onclick="saveSupply()">Save Order</button><button class="btn bo mt8" onclick="closeM('addSupplyModal')">Cancel</button>
+</div></div><div class="mo" id="markSuppliedModal"><div class="mw"><div class="mh"></div><div class="mt">Mark as Supplied</div>
+<div class="msub" id="msInfo"></div>
+<div id="msDetails" style="background:var(--s2);border-radius:12px;padding:14px;margin-bottom:14px;font-size:13px"></div>
+<div class="ig"><label class="lbl">Payment Mode</label>
+<select class="inp" id="msPayMode" style="background:var(--s2);color:var(--w)">
+  <option value="Cash">Cash</option>
+  <option value="Transfer">Transfer</option>
+  <option value="POS">POS</option>
+  <option value="Credit">Credit (Not yet paid)</option>
+  <option value="Part Payment">Part Payment</option>
+</select></div>
+<div style="font-size:12px;color:var(--gold);margin-bottom:14px">⚠️ Stock reduces and sale records to profit report.</div>
+<button class="btn bg" onclick="markSupplied()">✅ Confirm Supplied</button>
+<button class="btn bo mt8" onclick="closeM('markSuppliedModal')">Cancel</button>
+</div></div>
+
+<!-- Edit Supply Modal -->
+<div class="mo" id="editSupplyModal"><div class="mw"><div class="mh"></div><div class="mt">Edit Supply Order</div>
+<div class="ig"><label class="lbl">Client Name</label><input class="inp" id="espName" type="text" placeholder="e.g. Alhaji Musa"></div>
+<div class="ig"><label class="lbl">Phone (optional)</label><input class="inp" id="espPhone" type="tel" placeholder="08012345678" inputmode="tel"></div>
+<div class="ig"><label class="lbl">Product</label>
+<select class="inp" id="espProduct" onchange="updateEditSupplyTotal()" style="background:var(--s2);color:var(--w)">
+<option value="">— Select product —</option>
+</select></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Qty Ordered</label><input class="inp" id="espQty" type="number" placeholder="0" inputmode="decimal" oninput="updateEditSupplyTotal()"></div>
+  <div class="ig"><label class="lbl">Unit Price (₦)</label><input class="inp" id="espPrice" type="number" placeholder="0" inputmode="decimal" oninput="updateEditSupplyTotal()"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Total Goods (₦)</label><input class="inp" id="espTotal" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);opacity:.8"></div>
+  <div class="ig"><label class="lbl">Amount Deposited (₦)</label><input class="inp" id="espAmt" type="number" placeholder="0" inputmode="decimal" oninput="updateEditSupplyOutstanding()"></div>
+</div>
+<div class="ig"><label class="lbl">Outstanding Balance (₦)</label><input class="inp" id="espOutstanding" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);color:var(--red)"></div>
+<div class="ig"><label class="lbl">Payment Mode</label>
+<select class="inp" id="espPayMode" style="background:var(--s2);color:var(--w)">
+  <option value="Cash">Cash</option>
+  <option value="Transfer">Transfer</option>
+  <option value="POS">POS</option>
+  <option value="Credit">Credit (Not yet paid)</option>
+  <option value="Part Payment">Part Payment</option>
+</select></div>
+<div style="font-size:13px;color:var(--red);min-height:18px;margin-bottom:8px" id="espErr"></div>
+<button class="btn bp" onclick="saveEditSupply()">Save Changes</button>
+<button class="btn bo mt8" style="color:var(--red);border-color:rgba(231,76,60,.3)" onclick="deleteSupply()">🗑 Delete Order</button>
+<button class="btn bo mt8" onclick="closeM('editSupplyModal')">Cancel</button>
+</div></div><div class="mo" id="addSupplyModal"><div class="mw"><div class="mh"></div><div class="mt">New Supply Order</div><div class="msub">Fill in goods and payment details.</div>
+<div class="ig"><label class="lbl">Client Name</label><input class="inp" id="spName" type="text" placeholder="e.g. Alhaji Musa"></div>
+<div class="ig"><label class="lbl">Phone (optional)</label><input class="inp" id="spPhone" type="tel" placeholder="08012345678" inputmode="tel"></div>
+<div class="ig"><label class="lbl">Product</label>
+<select class="inp" id="spProduct" onchange="updateSupplyTotal()" style="background:var(--s2);color:var(--w)">
+<option value="">— Select product —</option>
+</select></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Qty Ordered</label><input class="inp" id="spQty" type="number" placeholder="0" inputmode="decimal" oninput="updateSupplyTotal()"></div>
+  <div class="ig"><label class="lbl">Unit Price (₦)</label><input class="inp" id="spPrice" type="number" placeholder="0" inputmode="decimal" oninput="updateSupplyTotal()"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Total Goods (₦)</label><input class="inp" id="spTotal" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);opacity:.8"></div>
+  <div class="ig"><label class="lbl">Amount Deposited (₦)</label><input class="inp" id="spAmt" type="number" placeholder="0" inputmode="decimal" oninput="updateSupplyOutstanding()"></div>
+</div>
+<div class="ig"><label class="lbl">Outstanding Balance (₦)</label><input class="inp" id="spOutstanding" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);color:var(--red);opacity:.9"></div>
+<div style="font-size:12px;color:var(--w30);margin-bottom:12px">When marked as supplied, stock will reduce automatically.</div>
+<div class="ig"><label class="lbl">Payment Mode</label>
+<select class="inp" id="spPayMode" style="background:var(--s2);color:var(--w)">
+  <option value="Cash">Cash</option>
+  <option value="Transfer">Transfer</option>
+  <option value="POS">POS</option>
+  <option value="Credit">Credit (Not yet paid)</option>
+  <option value="Part Payment">Part Payment</option>
+</select></div>
+<div style="font-size:13px;color:var(--red);min-height:18px;margin-bottom:8px" id="spErr"></div>
+<button class="btn bp" onclick="saveSupply()">Save Order</button>
+<button class="btn bo mt8" onclick="closeM('addSupplyModal')">Cancel</button>
 </div></div><div class="mo" id="editSaleModal"><div class="mw"><div class="mh"></div><div class="mt">Sale Details</div><div id="editSaleContent"></div><div class="section-divider"></div><button class="btn bd" id="editSaleShareBtn" style="margin-bottom:8px">📲 Share via WhatsApp</button><button class="btn btn-danger" id="editSaleDeleteBtn" style="margin-bottom:8px">🗑 Delete This Sale</button><button class="btn bo" onclick="closeM('editSaleModal')">Close</button>
 </div></div><div class="mo" id="editCreditModal"><div class="mw"><div class="mh"></div><div class="mt">Edit Credit Entry</div><div class="ig"><label class="lbl">Customer Name</label><input class="inp" id="ecName" type="text"></div><div class="ig"><label class="lbl">Amount Owed (₦)</label><input class="inp" id="ecAmt" type="number" inputmode="decimal"></div><div class="ig"><label class="lbl">Notes</label><input class="inp" id="ecNotes" type="text"></div><button class="btn bp" onclick="saveEditCredit()" style="margin-bottom:8px">Save Changes</button><button class="btn btn-danger" onclick="deleteCredit()" style="margin-bottom:8px">🗑 Delete</button><button class="btn bo" onclick="closeM('editCreditModal')">Cancel</button>
-</div></div><div class="mo" id="editNYSModal"><div class="mw"><div class="mh"></div><div class="mt">Edit Order</div><div class="ig"><label class="lbl">Customer Name</label><input class="inp" id="enName" type="text"></div><div class="ig"><label class="lbl">Amount Paid (₦)</label><input class="inp" id="enAmt" type="number" inputmode="decimal"></div><div class="ig"><label class="lbl">What they ordered</label><input class="inp" id="enItems" type="text"></div><div class="ig"><label class="lbl">Phone</label><input class="inp" id="enPhone" type="tel"></div><button class="btn bp" onclick="saveEditNYS()" style="margin-bottom:8px">Save Changes</button><button class="btn btn-danger" onclick="deleteNYS()" style="margin-bottom:8px">🗑 Delete</button><button class="btn bo" onclick="closeM('editNYSModal')">Cancel</button>
+</div></div><div class="mo" id="editNYSModal"><div class="mw"><div class="mh"></div><div class="mt">Edit Order</div>
+<div class="ig"><label class="lbl">Client Name</label><input class="inp" id="enName" type="text" placeholder="e.g. Alhaji Musa"></div>
+<div class="ig"><label class="lbl">Phone (optional)</label><input class="inp" id="enPhone" type="tel" placeholder="08012345678" inputmode="tel"></div>
+<div class="ig"><label class="lbl">Product</label><select class="inp" id="enItems" onchange="updateNYSTotal()" style="background:var(--s2);color:var(--w)"><option value="">— Select product —</option></select></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Qty Ordered</label><input class="inp" id="enQty" type="number" placeholder="0" inputmode="decimal" oninput="updateNYSTotal()"></div>
+  <div class="ig"><label class="lbl">Unit Price (₦)</label><input class="inp" id="enPrice" type="number" placeholder="0" inputmode="decimal" oninput="updateNYSTotal()"></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div class="ig"><label class="lbl">Total Goods (₦)</label><input class="inp" id="enTotal" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);opacity:.8"></div>
+  <div class="ig"><label class="lbl">Amount Deposited (₦)</label><input class="inp" id="enAmt" type="number" placeholder="0" inputmode="decimal" oninput="updateNYSOutstanding()"></div>
+</div>
+<div class="ig"><label class="lbl">Outstanding (₦)</label><input class="inp" id="enOutstanding" type="number" placeholder="0" inputmode="decimal" readonly style="background:var(--s3);color:var(--red)"></div>
+<div class="ig"><label class="lbl">Payment Mode</label>
+<select class="inp" id="enPayMode" style="background:var(--s2);color:var(--w)">
+  <option value="Cash">Cash</option>
+  <option value="Transfer">Transfer</option>
+  <option value="POS">POS</option>
+  <option value="Credit">Credit (Not yet paid)</option>
+  <option value="Part Payment">Part Payment</option>
+</select></div>
+<button class="btn bp" onclick="saveEditNYS()" style="margin-bottom:8px">Save Changes</button>
+<button class="btn btn-danger" onclick="deleteNYS()" style="margin-bottom:8px">🗑 Delete</button>
+<button class="btn bo" onclick="closeM('editNYSModal')">Cancel</button>
 </div></div><div class="mo" id="custHistModal"><div class="mw"><div class="mh"></div><div class="mt" id="custHistTitle">Customer</div><div id="custHistContent"></div><button class="btn bo mt8" onclick="closeM('custHistModal')">Close</button>
 </div></div><div class="mo" id="pricesModal"><div class="mw"><div class="mh"></div><div class="mt">Buy Prices</div><div class="msub">Enter your cost price per unit for each product. Used to calculate profit on every sale.</div><div id="pricesList"></div><button class="btn bp" onclick="savePrices()">Save All Prices</button><button class="btn bo mt8" onclick="closeM('pricesModal')">Close</button>
 </div></div><div class="mo" id="staffModal"><div class="mw"><div class="mh"></div><div class="mt">Manage Staff</div><div class="msub">Owners see everything. Staff can only record sales and stock. You can have multiple owners.</div><div id="staffListEl" style="margin-bottom:14px"></div><div class="section-divider"></div><div class="cl" style="margin-bottom:12px">Add New Member</div><div class="ig"><label class="lbl">Full Name</label><input class="inp" id="nsName" type="text" placeholder="Name"></div><div class="ig"><label class="lbl">4-Digit PIN</label><input class="inp" id="nsPin" type="password" maxlength="4" placeholder="e.g. 5678" inputmode="numeric"></div><div class="ig"><label class="lbl">Role</label><select class="sel" id="nsRole"><option value="staff">Staff — Sales & Stock only</option><option value="owner">Owner — Full access</option></select></div><button class="btn bd" onclick="addStaff()">Add Member</button><button class="btn bo mt8" onclick="closeM('staffModal')">Close</button>
@@ -244,11 +339,16 @@ function goPin(){
  pinBuf='';updPinDots(); document.getElementById('pinQ').textContent='Hello,'+selStaff.name+' 👋'; if(lockData&&lockData.until&&Date.now()<lockData.until){
  var mins=Math.ceil((lockData.until-Date.now())/60000); document.getElementById('pinErr').textContent='🔒 Locked for '+mins+' more min'+(mins>1?'s':'');}else{
  document.getElementById('pinErr').textContent='';}
- show('ls2');hide('ls1'); var _bioBtn=document.getElementById('biometricBtn'); if(_bioBtn){
- checkBiometricSupport().then(function(supported){
- if(_bioBtn) _bioBtn.style.display=supported?'flex':'none'; if(supported&&selStaff&&localStorage.getItem('dp3_bio_'+selStaff.id)){
- setTimeout(tryBiometricLogin,400);}
-}).catch(function(){if(_bioBtn) _bioBtn.style.display='none';});}
+ show('ls2');hide('ls1')
+
+  var bioBtn=document.getElementById('biometricBtn');
+  if(bioBtn&&selStaff){
+    var hasBio=localStorage.getItem('dp3_bio_'+selStaff.id);
+    checkBiometricSupport().then(function(supported){
+      if(bioBtn) bioBtn.style.display=supported?'flex':'none';
+      if(supported&&hasBio) setTimeout(tryBiometricLogin,400);
+    }).catch(function(){if(bioBtn) bioBtn.style.display='none';});
+  }
 }
 function pk(k){if(pinBuf.length>=4)return;pinBuf+=k;updPinDots();if(pinBuf.length===4)setTimeout(checkPin,80);}
 function pdel(){pinBuf=pinBuf.slice(0,-1);updPinDots();document.getElementById('pinErr').textContent='';}
@@ -335,8 +435,7 @@ function enterApp(){
  document.getElementById('lockScreen').style.display='none'; var app=document.getElementById('app'); app.style.display='flex'; app.style.flexDirection='column'; app.style.height='100dvh'; document.getElementById('topName').textContent=curUser.name; var av=document.getElementById('topAv'); av.textContent=ini(curUser.name); av.style.background=curUser.color||AVCOLS[0]; var isOwner=curUser.role==='owner'||curUser.role==='superowner'; document.querySelectorAll('.nav-own,.nav-btn-owner').forEach(function(b){b.classList.toggle('hidden',!isOwner);}); document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');}); document.getElementById('page-home').classList.add('active'); var nh=document.getElementById('nav-home'); if(nh)nh.classList.add('active'); setTimeout(renderHome,80); setTimeout(registerDevice,2000); if(_fbConnected&&_fbUrl){
  setTimeout(function(){
  fbPullAll().then(function(){
- sales=ld('dp3_s',[]);stock=ld('dp3_st',{}); credits=ld('dp3_c',[]);prices=ld('dp3_p',{}); activity=ld('dp3_a',[]);staff=ld('dp3_staff',[]); supplyData=ld('dp3_sup',[]); PRODS.forEach(function(p){if(stock[p]==null)stock[p]=0;}); renderHome(); updateSync('synced');});},500);}
- setTimeout(offerBiometricSetup,3500);}
+ sales=ld('dp3_s',[]);stock=ld('dp3_st',{}); credits=ld('dp3_c',[]);prices=ld('dp3_p',{}); activity=ld('dp3_a',[]);staff=ld('dp3_staff',[]); supplyData=ld('dp3_sup',[]); PRODS.forEach(function(p){if(stock[p]==null)stock[p]=0;}); renderHome(); updateSync('synced');});},500);}}
 function lockApp(){
  curUser=null;selStaff=null;pinBuf=''; closeM('settingsModal'); document.getElementById('app').style.display='none'; document.getElementById('lockScreen').style.display='flex'; initLock();}
 function show(id){var el=document.getElementById(id);if(el)el.style.display='flex';}
@@ -441,6 +540,7 @@ async function fbPushAll(){
  prices:sanitizePrices(prices||{}),
  staff:staff||[],
  customProds:customProds||[],
+ custContacts:_custContacts||{},
  activity:(activity||[]).slice(0,200),
  lastUpdate:Date.now()
 }; var r=await fbXHR('PUT',_fbUrl+'.json',bundle); if(r.ok){
@@ -468,6 +568,9 @@ async function fbPullAll(){
  if(data.customProds!==undefined){
  var fbCustom=data.customProds||[]; if(JSON.stringify(fbCustom)!==JSON.stringify(customProds||[])){
  customProds=fbCustom; localStorage.setItem('dp3_custom',JSON.stringify(customProds)); changed=true;}
+}
+ if(data.custContacts&&Object.keys(data.custContacts).length>0){
+ var fbCC=data.custContacts; var localCC=Object.keys(_custContacts||{}).length; var fbCCKeys=Object.keys(fbCC).length; if(fbCCKeys>=localCC){_custContacts=fbCC; localStorage.setItem('dp3_custcontacts',JSON.stringify(_custContacts)); changed=true;}
 }
  if(data.credits&&data.credits.length>=(credits||[]).length){credits=data.credits; localStorage.setItem('dp3_c',JSON.stringify(credits)); changed=true;}
  if(data.supplyData&&data.supplyData.length>=(supplyData||[]).length){supplyData=data.supplyData; localStorage.setItem('dp3_sup',JSON.stringify(supplyData)); changed=true;}
@@ -597,27 +700,399 @@ function savePayment(){
  c.paid=(c.paid||0)+amt; sv('dp3_c',credits); if(_fbConnected&&_fbUrl){
  fbXHR('PUT',_fbUrl+'/credits.json',credits); fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());}
  logAct('credit',c.name+' paid '+fmt(amt)); closeM('markPaidModal'); renderCredit(); toast(c.paid>=c.amount?'✅ Fully paid!':'✅ Payment recorded');}
-function renderSupply() {
- const pending=supplyData.filter(s => !s.supplied); document.getElementById('totPending').textContent=pending.length+' order'+(pending.length!==1?'s' :''); const el=document.getElementById('supplyList'); if (!supplyData.length) {
- el.innerHTML='<div class="empty"><div class="ei">🚚</div><div class="et">No pending deliveries</div></div>'; return;}
- const sorted=[...supplyData].sort((a,b) => (a.supplied?1 :0) - (b.supplied?1 :0)); el.innerHTML=sorted.map(s => {
- const isPending=!s.supplied; return `<div class="ci" style="border-left:4px solid ${isPending?'var(--gold)' :'var(--green)'}"><div class="fb"><div><div class="ci-n">${s.name}</div><div class="ci-m">${fmtD(s.date)} · ${s.items}</div>
- ${s.phone?'<div class="ci-m">📞 '+s.phone+'</div>' :''}
- <span class="spill ${isPending?'sppt' :'spp'}">${isPending?'🚚 NOT YET SUPPLIED' :'✅ SUPPLIED'}</span></div><div style="text-align:right"><div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:var(--gold)">${fmt(s.amount)}</div><div class="mut">${s.staffName}</div>
- ${isPending?`<button class="btn bg bsm" style="margin-top:6px" onclick="openMarkSupplied(${s.id})">Mark Supplied</button>` :''}
- </div></div></div>`;}).join('');}
-function openAddSupply() {
- document.getElementById('spName').value=''; document.getElementById('spAmt').value=''; document.getElementById('spItems').value=''; document.getElementById('spPhone').value=''; openM('addSupplyModal');}
-function saveSupply() {
- const name=document.getElementById('spName').value.trim(); const amt=parseFloat(document.getElementById('spAmt').value)||0; const items=document.getElementById('spItems').value.trim(); const phone=document.getElementById('spPhone').value.trim(); if (!name||!amt||!items){toast('Fill in name,amount and items'); return;}
- supplyData.push({id:Date.now(),name,amount:amt,items,phone,date:today(),supplied:false,staffName:curUser.name,staffId:curUser.id}); sv('dp3_sup',supplyData); logAct('sale','Pending supply for '+name+':'+fmt(amt)); if(_fbConnected&&_fbUrl){fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());}
- closeM('addSupplyModal'); renderSupply(); toast('✅ Saved — '+name+' pending delivery');}
-function openMarkSupplied(id) {
- markSupId=id; const s=supplyData.find(x => x.id===id); document.getElementById('msInfo').textContent=s.name+' — '+s.items+' — '+fmt(s.amount); openM('markSuppliedModal');}
-function markSupplied() {
- const s=supplyData.find(x => x.id===markSupId); if (!s) return; s.supplied=true; s.suppliedDate=today(); s.suppliedBy=curUser.name; sv('dp3_sup',supplyData); logAct('sale','Supplied goods to '+s.name+':'+fmt(s.amount)); if(_fbConnected&&_fbUrl){fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());}
- closeM('markSuppliedModal'); renderSupply(); toast('✅ Marked as supplied!');}
-function switchPT(t,btn){pTab=t;document.querySelectorAll('#page-profit .tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderProfit()}
+
+function markSupplied(){
+  var s=supplyData.find(function(x){return x.id===markSupId;});
+  if(!s) return;
+  
+  // Get payment mode from modal
+  var payEl=document.getElementById('msPayMode');
+  var payMode=payEl?payEl.value:(s.payment||'Cash');
+  
+  s.supplied=true;
+  s.suppliedDate=today();
+  s.suppliedBy=curUser.name;
+  s.payment=payMode;
+
+  // Calculate profit using buy price
+  var buyPrice=prices[s.product]||s.buyPrice||0;
+  var revenue=s.amount||0;
+  var profit=buyPrice>0?(s.price-buyPrice)*(s.qty||0):0;
+  s.profit=profit;
+  s.buyPrice=buyPrice;
+
+  // Reduce stock
+  if(s.product&&s.qty){
+    if(stock[s.product]!==undefined){
+      var current=stock[s.product]||0;
+      stock[s.product]=Math.max(0,current-s.qty);
+      sv('dp3_st',stock);
+      if(_fbConnected&&_fbUrl) fbXHR('PUT',_fbUrl+'/stock.json',sanitizeStock(stock));
+    }
+  }
+
+  // Create a sale record so it appears in sales + profit report
+  var saleRecord={
+    id:Date.now(),
+    date:today(),
+    time:nowT(),
+    items:[{product:s.product||(s.items||'Supply'),qty:s.qty||1,price:s.price||s.amount||0}],
+    payment:payMode,
+    customer:s.name||'',
+    revenue:revenue,
+    profit:profit,
+    staffId:curUser.id,
+    staffName:curUser.name,
+    fromSupply:true
+  };
+  sales.push(saleRecord);
+  sv('dp3_s',sales);
+  _lastSaleId=saleRecord.id;
+
+  sv('dp3_sup',supplyData);
+  logAct('sale','Supplied goods to '+s.name+': '+fmt(revenue)+(s.product?' ('+s.qty+'× '+s.product+')'+(profit?' · Profit: '+fmt(profit):''):''));
+  if(_fbConnected&&_fbUrl){
+    fbXHR('PUT',_fbUrl+'/sales.json',sales);
+    fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);
+    fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+  }
+  closeM('markSuppliedModal');
+  renderSupply();
+  renderHome();
+  renderStock();
+  toast('✅ Supplied! '+fmt(revenue)+' recorded'+(profit?' · Profit: '+fmt(profit):''),4000);
+}
+
+
+// ── SUPPLY EDIT / DELETE ──
+var _editSupplyId = null;
+
+function openEditSupply(id){
+  var s=supplyData.find(function(x){return x.id===id;});
+  if(!s) return;
+  _editSupplyId=id;
+  document.getElementById('espName').value=s.name||'';
+  document.getElementById('espPhone').value=s.phone||'';
+  populateSupplyProductDropdown('espProduct', s.product||'');
+  if(document.getElementById('espPayMode')) document.getElementById('espPayMode').value=s.payment||'Cash';
+  document.getElementById('espQty').value=s.qty||'';
+  document.getElementById('espPrice').value=s.price||'';
+  document.getElementById('espTotal').value=s.amount||'';
+  document.getElementById('espAmt').value=s.deposit||'';
+  document.getElementById('espOutstanding').value=s.outstanding||'';
+  document.getElementById('espErr').textContent='';
+  openM('editSupplyModal');
+}
+
+function updateEditSupplyTotal(){
+  var qty=parseFloat(document.getElementById('espQty').value)||0;
+  var price=parseFloat(document.getElementById('espPrice').value)||0;
+  var total=qty*price;
+  document.getElementById('espTotal').value=total?total.toFixed(2):'';
+  updateEditSupplyOutstanding();
+}
+
+function updateEditSupplyOutstanding(){
+  var total=parseFloat(document.getElementById('espTotal').value)||0;
+  var deposit=parseFloat(document.getElementById('espAmt').value)||0;
+  var outstanding=Math.max(0,total-deposit);
+  var el=document.getElementById('espOutstanding');
+  if(el){
+    el.value=outstanding?outstanding.toFixed(2):'';
+    el.style.color=outstanding>0?'var(--red)':'var(--green)';
+  }
+}
+
+function saveEditSupply(){
+  var s=supplyData.find(function(x){return x.id===_editSupplyId;});
+  if(!s) return;
+  var name=document.getElementById('espName').value.trim();
+  var phone=document.getElementById('espPhone').value.trim();
+  var product=document.getElementById('espProduct').value.trim();
+  var qty=parseFloat(document.getElementById('espQty').value)||0;
+  var price=parseFloat(document.getElementById('espPrice').value)||0;
+  var total=parseFloat(document.getElementById('espTotal').value)||0;
+  var deposit=parseFloat(document.getElementById('espAmt').value)||0;
+  var outstanding=parseFloat(document.getElementById('espOutstanding').value)||0;
+  var err=document.getElementById('espErr');
+
+  if(!name){err.textContent='Enter client name';return;}
+  if(!product){err.textContent='Enter product name';return;}
+  if(!qty){err.textContent='Enter quantity';return;}
+
+  if(!total&&qty&&price) total=qty*price;
+  if(!outstanding) outstanding=Math.max(0,total-deposit);
+
+  // Log changes
+  var changes=[];
+  if(s.name!==name) changes.push('name: '+s.name+' → '+name);
+  if(s.product!==product) changes.push('product: '+(s.product||'—')+' → '+product);
+  if(s.qty!==qty) changes.push('qty: '+(s.qty||0)+' → '+qty);
+  if(s.amount!==total) changes.push('total: '+fmt(s.amount)+' → '+fmt(total));
+  if(s.deposit!==deposit) changes.push('deposit: '+fmt(s.deposit||0)+' → '+fmt(deposit));
+
+  var espPayMode=document.getElementById('espPayMode')?document.getElementById('espPayMode').value:'Cash';
+  var buyPriceEsp=prices[product]||0;
+  var profitEsp=buyPriceEsp>0?(price-buyPriceEsp)*qty:0;
+  s.name=name; s.phone=phone; s.product=product;
+  s.qty=qty; s.price=price; s.amount=total;
+  s.deposit=deposit; s.outstanding=outstanding;
+  s.payment=espPayMode; s.profit=profitEsp; s.buyPrice=buyPriceEsp;
+  s.editedAt=today(); s.editedBy=curUser.name;
+
+  sv('dp3_sup',supplyData);
+  if(_fbConnected&&_fbUrl){
+    fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);
+    fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+  }
+
+  logAct('supply','Edited supply order for '+name+(changes.length?' ('+changes.join(', ')+')':''));
+  closeM('editSupplyModal');
+  renderSupply();
+  toast('✅ Order updated');
+}
+
+function deleteSupply(){
+  var s=supplyData.find(function(x){return x.id===_editSupplyId;});
+  if(!s) return;
+  appConfirm(
+    'Delete this order?',
+    'Order for '+s.name+(s.product?' — '+s.qty+'× '+s.product:'')+'\nThis cannot be undone.',
+    function(){
+      supplyData=supplyData.filter(function(x){return x.id!==_editSupplyId;});
+      sv('dp3_sup',supplyData);
+      if(_fbConnected&&_fbUrl){
+        fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);
+        fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+      }
+      logAct('supply','Deleted supply order: '+s.name+(s.product?' ('+s.qty+'× '+s.product+')':'')+' — '+fmt(s.amount));
+      closeM('editSupplyModal');
+      renderSupply();
+      toast('✅ Order deleted');
+    }
+  );
+}
+
+function renderSupply(){
+  // Merge old nys data into supplyData for unified display
+  var nysLocal=JSON.parse(localStorage.getItem('dp3_nys')||'[]');
+  nysLocal.forEach(function(n){
+    var exists=supplyData.find(function(x){return x.id===n.id;});
+    if(!exists){
+      // Migrate old nys format to new supply format
+      supplyData.push({id:n.id,name:n.name,phone:n.phone||'',
+        product:n.product||n.items||'',items:n.items||'',
+        qty:n.qty||0,price:n.price||0,
+        amount:n.amount||0,deposit:n.deposit||0,outstanding:n.outstanding||0,
+        date:n.date||today(),supplied:n.supplied||false,
+        suppliedDate:n.suppliedDate||'',suppliedBy:n.suppliedBy||'',
+        staffName:n.staffName||'',staffId:n.staffId||''
+      });
+    }
+  });
+  var pending=supplyData.filter(function(s){return !s.supplied;});
+  document.getElementById('totPending').textContent=pending.length+' order'+(pending.length!==1?'s':'');
+  var el=document.getElementById('supplyList');
+  if(!supplyData.length){
+    el.innerHTML='<div class="empty"><div class="ei">🚚</div><div class="et">No pending deliveries</div></div>';
+    return;
+  }
+  var sorted=[...supplyData].sort(function(a,b){return (a.supplied?1:0)-(b.supplied?1:0);});
+  el.innerHTML=sorted.map(function(s){
+    var isPending=!s.supplied;
+    var borderCol=isPending?'var(--gold)':'var(--w12)';
+    var statusBadge=isPending
+      ?'<span style="font-size:10px;background:rgba(201,168,76,.2);color:var(--gold);border-radius:6px;padding:2px 8px;font-weight:700">PENDING</span>'
+      :'<span style="font-size:10px;background:rgba(39,174,96,.15);color:var(--green);border-radius:6px;padding:2px 8px;font-weight:700">SUPPLIED ✓</span>';
+
+    return '<div class="ci" style="border-left:4px solid '+borderCol+';opacity:'+(isPending?'1':'.6')+'">'+
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">'+
+        '<div>'+
+          '<div style="font-size:14px;font-weight:700;color:var(--w)">'+s.name+'</div>'+
+          (s.phone?'<div style="font-size:11px;color:var(--w30)">📞 '+s.phone+'</div>':'')+
+        '</div>'+
+        statusBadge+
+      '</div>'+
+      (s.product?
+        '<div style="background:var(--s3);border-radius:8px;padding:8px 10px;margin-bottom:6px">'+
+          '<div style="font-size:13px;font-weight:700;color:var(--gold2)">'+s.qty+'× '+s.product+'</div>'+
+          '<div style="display:flex;justify-content:space-between;margin-top:4px">'+
+            (s.price?'<span style="font-size:11px;color:var(--w30)">Unit: '+fmt(s.price)+'</span>':'')+
+            '<span style="font-size:13px;font-weight:700;color:var(--w)">Total: '+fmt(s.amount)+'</span>'+
+          '</div>'+
+        '</div>':
+        '<div style="font-size:12px;color:var(--w30);margin-bottom:6px">'+fmt(s.amount)+'</div>'
+      )+
+      '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--w30)">'+
+        '<span>Deposit: '+fmt(s.deposit||0)+'</span>'+
+        (s.outstanding>0?'<span style="color:var(--red);font-weight:700">Owes: '+fmt(s.outstanding)+'</span>':'<span style="color:var(--green)">Fully paid</span>')+
+      '</div>'+
+      '<div style="font-size:10px;color:var(--w30);margin-top:4px">'+fmtD(s.date)+' · '+s.staffName+(s.payment?' · <b style="color:var(--gold)">'+s.payment+'</b>':'')+(s.supplied?' · Supplied: '+fmtD(s.suppliedDate):'')+'</div>'+
+      (curUser&&(curUser.role==='owner'||curUser.role==='superowner')?
+        '<div style="display:flex;gap:8px;margin-top:10px">'+
+          (isPending?'<button onclick="openMarkSupplied('+s.id+')" style="flex:1;padding:9px;border-radius:10px;border:1px solid var(--gold);background:rgba(201,168,76,.1);color:var(--gold);cursor:pointer;font-size:13px;font-weight:600">Supplied →</button>':'')+
+          '<button onclick="openEditSupply('+s.id+')" style="padding:9px 14px;border-radius:10px;border:1px solid var(--w12);background:var(--s3);color:var(--w);cursor:pointer;font-size:13px">✏️</button>'+
+        '</div>':'')+
+    '</div>';
+  }).join('');
+}
+
+function updateSupplyTotal(){
+  var qty=parseFloat(document.getElementById('spQty').value)||0;
+  var price=parseFloat(document.getElementById('spPrice').value)||0;
+  var total=qty*price;
+  document.getElementById('spTotal').value=total?total.toFixed(2):'';
+  updateSupplyOutstanding();
+}
+
+function updateSupplyOutstanding(){
+  var total=parseFloat(document.getElementById('spTotal').value)||0;
+  var deposit=parseFloat(document.getElementById('spAmt').value)||0;
+  var outstanding=Math.max(0,total-deposit);
+  var el=document.getElementById('spOutstanding');
+  if(el){
+    el.value=outstanding?outstanding.toFixed(2):'';
+    el.style.color=outstanding>0?'var(--red)':'var(--green)';
+  }
+}
+
+
+function populateSupplyProductDropdown(selectId, selected){
+  var sel=document.getElementById(selectId);
+  if(!sel) return;
+  var allProds=[...PRODS,...(customProds||[])].sort();
+  sel.innerHTML='<option value="">— Select product —</option>';
+  allProds.forEach(function(p){
+    var opt=document.createElement('option');
+    opt.value=p;
+    opt.textContent=p+(stock[p]!==undefined?' ('+stock[p]+' in stock)':'');
+    if(p===selected) opt.selected=true;
+    sel.appendChild(opt);
+  });
+  // If selected not in list but has a value, add it
+  if(selected && !allProds.includes(selected)){
+    var opt=document.createElement('option');
+    opt.value=selected;
+    opt.textContent=selected+' (custom)';
+    opt.selected=true;
+    sel.appendChild(opt);
+  }
+}
+
+function openAddSupply(){
+  document.getElementById('spName').value='';
+  document.getElementById('spPhone').value='';
+  document.getElementById('spQty').value='';
+  document.getElementById('spPrice').value='';
+  document.getElementById('spTotal').value='';
+  document.getElementById('spAmt').value='';
+  document.getElementById('spOutstanding').value='';
+  document.getElementById('spErr').textContent='';
+  if(document.getElementById('spPayMode')) document.getElementById('spPayMode').value='Cash';
+  // Populate product dropdown with stock list
+  populateSupplyProductDropdown('spProduct', '');
+  openM('addSupplyModal');
+}
+function saveSupply(){
+  var name=document.getElementById('spName').value.trim();
+  var phone=document.getElementById('spPhone').value.trim();
+  var product=document.getElementById('spProduct').value.trim();
+  var qty=parseFloat(document.getElementById('spQty').value)||0;
+  var price=parseFloat(document.getElementById('spPrice').value)||0;
+  var total=parseFloat(document.getElementById('spTotal').value)||0;
+  var deposit=parseFloat(document.getElementById('spAmt').value)||0;
+  var outstanding=parseFloat(document.getElementById('spOutstanding').value)||0;
+  var err=document.getElementById('spErr');
+
+  if(!name){err.textContent='Enter client name';return;}
+  if(!product){err.textContent='Enter product name';return;}
+  if(!qty||qty<=0){err.textContent='Enter quantity ordered';return;}
+  if(!price&&!total){err.textContent='Enter unit price';return;}
+
+  // Auto-calc total if not set
+  if(!total&&qty&&price) total=qty*price;
+  if(!outstanding) outstanding=Math.max(0,total-deposit);
+
+  var payMode=document.getElementById('spPayMode')?document.getElementById('spPayMode').value:'Cash';
+  // Calculate profit using buy price from prices object
+  var buyPrice=prices[product]||0;
+  var profit=buyPrice>0?(price-buyPrice)*qty:0;
+
+  var order={
+    id:Date.now(),
+    name:name,
+    phone:phone,
+    product:product,
+    qty:qty,
+    price:price,
+    amount:total,
+    deposit:deposit,
+    outstanding:outstanding,
+    payment:payMode,
+    profit:profit,
+    buyPrice:buyPrice,
+    date:today(),
+    supplied:false,
+    staffName:curUser.name,
+    staffId:curUser.id
+  };
+
+  supplyData.push(order);
+  sv('dp3_sup',supplyData);
+  logAct('sale','Pending supply for '+name+': '+fmt(total)+' ('+qty+'× '+product+')');
+  if(_fbConnected&&_fbUrl){
+    fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);
+    fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+  }
+  closeM('addSupplyModal');
+  renderSupply();
+  toast('✅ Order saved — '+name+' pending delivery');
+}
+function openMarkSupplied(id){
+  markSupId=id;
+  var s=supplyData.find(function(x){return x.id===id;});
+  if(!s) return;
+  document.getElementById('msInfo').textContent='Confirming supply for '+s.name;
+  var det=document.getElementById('msDetails');
+  if(det){
+    det.innerHTML=
+      '<div style="display:flex;justify-content:space-between;margin-bottom:6px">'+
+        '<span style="color:var(--w30)">Product</span>'+
+        '<span style="font-weight:700;color:var(--gold2)">'+(s.product?s.qty+'× '+s.product:'—')+'</span>'+
+      '</div>'+
+      '<div style="display:flex;justify-content:space-between;margin-bottom:6px">'+
+        '<span style="color:var(--w30)">Total Amount</span>'+
+        '<span style="font-weight:700;color:var(--w)">'+fmt(s.amount)+'</span>'+
+      '</div>'+
+      '<div style="display:flex;justify-content:space-between;margin-bottom:6px">'+
+        '<span style="color:var(--w30)">Deposit Paid</span>'+
+        '<span style="font-weight:700;color:var(--green)">'+fmt(s.deposit||0)+'</span>'+
+      '</div>'+
+      (s.outstanding>0?
+        '<div style="display:flex;justify-content:space-between">'+
+          '<span style="color:var(--w30)">Outstanding</span>'+
+          '<span style="font-weight:700;color:var(--red)">'+fmt(s.outstanding)+'</span>'+
+        '</div>':'')+
+      (s.product&&s.qty?
+        '<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--w06);font-size:11px;color:var(--gold)">'+
+          '📦 '+s.qty+' '+s.product+' will be removed from stock'+
+        '</div>':'');
+  }
+  // Pre-set payment mode from order
+  var msPayEl=document.getElementById('msPayMode');
+  if(msPayEl) msPayEl.value=s.payment||'Cash';
+  // Show profit preview
+  var buyPrice=prices[s.product]||s.buyPrice||0;
+  var profit=buyPrice>0&&s.price?(s.price-buyPrice)*(s.qty||0):0;
+  if(det&&profit){
+    det.innerHTML+=
+      '<div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid var(--w06)">'+
+        '<span style="color:var(--w30)">Est. Profit</span>'+
+        '<span style="font-weight:700;color:var(--green)">'+fmt(profit)+'</span>'+
+      '</div>';
+  }
+  openM('markSuppliedModal');
+}function switchPT(t,btn){pTab=t;document.querySelectorAll('#page-profit .tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderProfit()}
 function renderProfit(){
  var n=new Date(); var filtered,label,ll; if(pTab==='daily'){
  filtered=sales.filter(function(s){return s.date===today();}); label='Today'; ll='Sales Today';}else if(pTab==='weekly'){
@@ -738,10 +1213,65 @@ function deleteCredit(){
  appConfirm('Delete this credit?','This cannot be undone.',function(){
  var dc=credits.find(function(x){return x.id==_editCreditId;}); credits=credits.filter(function(x){return x.id!=_editCreditId;}); sv('dp3_c',credits); if(_fbConnected&&_fbUrl){fbXHR('PUT',_fbUrl+'/credits.json',credits);fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());}
  if(dc) logAct('credit','Deleted credit:'+dc.name+' ₦'+fmt(dc.amount)); closeM('editCreditModal');renderCredit();toast('✅ Credit deleted');});}
+
+function updateNYSTotal(){
+  var qty=parseFloat(document.getElementById('enQty').value)||0;
+  var price=parseFloat(document.getElementById('enPrice').value)||0;
+  var total=qty*price;
+  var tel=document.getElementById('enTotal');
+  if(tel) tel.value=total?total.toFixed(2):'';
+  updateNYSOutstanding();
+}
+function updateNYSOutstanding(){
+  var total=parseFloat(document.getElementById('enTotal').value)||0;
+  var dep=parseFloat(document.getElementById('enAmt').value)||0;
+  var out=Math.max(0,total-dep);
+  var oel=document.getElementById('enOutstanding');
+  if(oel){oel.value=out?out.toFixed(2):''; oel.style.color=out>0?'var(--red)':'var(--green)';}
+}
+
 function openEditNYS(id){
- var n=nys.find(function(x){return x.id==id;});if(!n)return; _editNYSId=id; document.getElementById('enName').value=n.name; document.getElementById('enAmt').value=n.amount; document.getElementById('enItems').value=n.items; document.getElementById('enPhone').value=n.phone||''; openM('editNYSModal');}
+  var n=nys.find(function(x){return x.id==id;});
+  if(!n)return;
+  _editNYSId=id;
+  document.getElementById('enName').value=n.name||'';
+  document.getElementById('enPhone').value=n.phone||'';
+  document.getElementById('enAmt').value=n.deposit||n.amount||0;
+  document.getElementById('enQty').value=n.qty||'';
+  document.getElementById('enPrice').value=n.price||'';
+  document.getElementById('enTotal').value=n.amount||'';
+  document.getElementById('enOutstanding').value=n.outstanding||'';
+  populateSupplyProductDropdown('enItems', n.product||n.items||'');
+  if(document.getElementById('enPayMode')) document.getElementById('enPayMode').value=n.payment||'Cash';
+  openM('editNYSModal');
+}
 function saveEditNYS(){
- var n=nys.find(function(x){return x.id==_editNYSId;});if(!n)return; n.name=document.getElementById('enName').value.trim()||n.name; n.amount=parseFloat(document.getElementById('enAmt').value)||n.amount; n.items=document.getElementById('enItems').value||n.items; n.phone=document.getElementById('enPhone').value; sv('dp3_nys',nys);closeM('editNYSModal');renderNYS();toast('Updated');}
+  var n=nys.find(function(x){return x.id==_editNYSId;});
+  if(!n) return;
+  var name=document.getElementById('enName').value.trim();
+  var phone=document.getElementById('enPhone').value.trim();
+  var product=document.getElementById('enItems').value;
+  var qty=parseFloat(document.getElementById('enQty').value)||0;
+  var price=parseFloat(document.getElementById('enPrice').value)||0;
+  var total=parseFloat(document.getElementById('enTotal').value)||0;
+  var deposit=parseFloat(document.getElementById('enAmt').value)||0;
+  var outstanding=parseFloat(document.getElementById('enOutstanding').value)||0;
+  if(!name){toast('Enter client name');return;}
+  if(!total&&qty&&price) total=qty*price;
+  if(!outstanding) outstanding=Math.max(0,total-deposit);
+  var enPayMode=document.getElementById('enPayMode')?document.getElementById('enPayMode').value:'Cash';
+  n.name=name; n.phone=phone;
+  n.product=product; n.items=product;
+  n.qty=qty; n.price=price;
+  n.amount=total; n.deposit=deposit; n.outstanding=outstanding;
+  n.payment=enPayMode; n.editedBy=curUser.name; n.editedAt=today();
+  sv('dp3_nys',nys);
+  if(_fbConnected&&_fbUrl){fbXHR('PUT',_fbUrl+'/supplyData.json',supplyData);fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());}
+  logAct('supply','Edited old order for '+name+(product?' ('+product+')':''));
+  closeM('editNYSModal');
+  renderSupply();
+  toast('Order updated');
+}
 function deleteNYS(){
  appConfirm('Delete this order?','This cannot be undone.',function(){
  var nysData=ld('dp3_nys',[]); nysData=nysData.filter(function(x){return x.id!=_editNYSId;}); localStorage.setItem('dp3_nys',JSON.stringify(nysData)); closeM('editNYSModal'); renderSupply(); toast('✅ Order deleted');});}
@@ -812,6 +1342,7 @@ function confirmClearData(){
  prices:sanitizePrices(prices||{}),
  staff:staff||[],
  customProds:customProds||[],
+ custContacts:_custContacts||{},
  activity:(activity||[]).slice(0,200),
  lastUpdate:Date.now(),
  clearedAt:parseInt(localStorage.getItem('dp3_cleared')||'0')
@@ -829,10 +1360,6 @@ document.querySelectorAll('.mo').forEach(function(el){
  eyeBtn.addEventListener('click',function(e){
  e.stopPropagation(); toggleStockVisibility();}); eyeBtn.addEventListener('touchend',function(e){
  e.preventDefault(); e.stopPropagation(); toggleStockVisibility();});}
-var bioBtn2=document.getElementById('biometricBtn');if(bioBtn2){
- bioBtn2.addEventListener('click',function(e){
- e.stopPropagation(); tryBiometricLogin();}); bioBtn2.addEventListener('touchend',function(e){
- e.preventDefault(); e.stopPropagation(); tryBiometricLogin();});}
 document.getElementById('payM').addEventListener('change',function(){
  document.getElementById('credFld').style.display=this.value==='Credit'?'block':'none';});var pSrch=document.getElementById('pSrch');var pdrop=document.getElementById('pdrop');if(pSrch&&pdrop){
  pSrch.addEventListener('focus',function(){
@@ -951,104 +1478,140 @@ var _stockHidden=localStorage.getItem('dp3_stockHidden')==='1';function applySto
 }
 function toggleStockVisibility(){
  _stockHidden=!_stockHidden; localStorage.setItem('dp3_stockHidden',_stockHidden?'1':'0'); applyStockVisibility();}
-var _biometricUserId=null;async function checkBiometricSupport(){
- try{
- if(!window.PublicKeyCredential) return false; if(typeof window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable!=='function') return false; return await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();}catch(e){return false;}
-}
-async function registerBiometric(userId,userName){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ── FACE ID / BIOMETRIC LOGIN ──
+var _biometricUserId = null;
+
+async function checkBiometricSupport(){
   try{
-    var supported=await checkBiometricSupport();
-    if(!supported) return false;
-    var challenge=new Uint8Array(32);
-    window.crypto.getRandomValues(challenge);
-    // Get correct rpId - must match actual domain exactly
-    var rpId=window.location.hostname;
-    if(!rpId||rpId==='localhost'||rpId===''){
-      // Can't use biometrics without proper domain
-      toast('Face ID requires app to be installed on Home Screen',3000);
+    if(!window.PublicKeyCredential) return false;
+    if(typeof window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable !== 'function') return false;
+    return await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+  }catch(e){ return false; }
+}
+
+async function registerBiometric(userId, userName){
+  try{
+    var rpId = window.location.hostname;
+    if(!rpId || rpId === 'localhost' || rpId === ''){
+      toast('Face ID requires app installed on Home Screen', 3000);
       return false;
     }
-    var credential=await navigator.credentials.create({
+    var challenge = new Uint8Array(32);
+    window.crypto.getRandomValues(challenge);
+    var cred = await navigator.credentials.create({
       publicKey:{
-        challenge:challenge,
-        rp:{name:'DE PORRH & BROS',id:rpId},
-        user:{
-          id:new TextEncoder().encode(userId),
-          name:userName,
-          displayName:userName
+        challenge: challenge,
+        rp: { name: 'DE PORRH & BROS', id: rpId },
+        user: { id: new TextEncoder().encode(String(userId)), name: userName, displayName: userName },
+        pubKeyCredParams: [{ alg: -7, type: 'public-key' }, { alg: -257, type: 'public-key' }],
+        authenticatorSelection: {
+          authenticatorAttachment: 'platform',
+          userVerification: 'preferred',
+          residentKey: 'discouraged',
+          requireResidentKey: false
         },
-        pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
-        authenticatorSelection:{
-          authenticatorAttachment:'platform',
-          userVerification:'preferred',
-          residentKey:'discouraged',
-          requireResidentKey:false
-        },
-        excludeCredentials:[],
-        timeout:30000
+        timeout: 30000,
+        excludeCredentials: []
       }
     });
-    if(credential){
-      localStorage.setItem('dp3_bio_'+userId,btoa(String.fromCharCode(...new Uint8Array(credential.rawId))));
-      localStorage.setItem('dp3_bio_rpid_'+userId,rpId);
+    if(cred){
+      localStorage.setItem('dp3_bio_' + userId, btoa(String.fromCharCode(...new Uint8Array(cred.rawId))));
+      localStorage.setItem('dp3_bio_rpid_' + userId, rpId);
       return true;
     }
     return false;
   }catch(e){
-    if(e.name==='NotAllowedError') toast('Face ID cancelled',2000);
-    else if(e.name==='InvalidStateError') toast('Face ID already registered',2000);
-    else toast('Face ID not available on this device',2500);
+    if(e.name === 'NotAllowedError') toast('Face ID cancelled', 2000);
+    else if(e.name === 'InvalidStateError') toast('Face ID already set up', 2000);
+    else toast('Face ID not available: ' + e.message, 3000);
     return false;
   }
 }
+
 async function authenticateBiometric(userId){
   try{
-    var storedId=localStorage.getItem('dp3_bio_'+userId);
-    if(!storedId) return false;
-    // Use the rpId that was used during registration
-    var rpId=localStorage.getItem('dp3_bio_rpid_'+userId)||window.location.hostname;
-    if(!rpId||rpId==='localhost') return false;
-    var challenge=new Uint8Array(32);
+    var stored = localStorage.getItem('dp3_bio_' + userId);
+    if(!stored) return false;
+    var rpId = localStorage.getItem('dp3_bio_rpid_' + userId) || window.location.hostname;
+    if(!rpId || rpId === 'localhost') return false;
+    var challenge = new Uint8Array(32);
     window.crypto.getRandomValues(challenge);
-    var credId=Uint8Array.from(atob(storedId),function(c){return c.charCodeAt(0);});
-    var assertion=await navigator.credentials.get({
+    var credId = Uint8Array.from(atob(stored), function(c){ return c.charCodeAt(0); });
+    var assertion = await navigator.credentials.get({
       publicKey:{
-        challenge:challenge,
-        rpId:rpId,
-        allowCredentials:[{id:credId,type:'public-key',transports:['internal']}],
-        userVerification:'preferred',
-        timeout:30000
+        challenge: challenge,
+        rpId: rpId,
+        allowCredentials: [{ id: credId, type: 'public-key', transports: ['internal'] }],
+        userVerification: 'preferred',
+        timeout: 30000
       }
     });
-    if(assertion) return true;
-    return false;
+    return assertion ? true : false;
   }catch(e){
-    if(e.name==='NotAllowedError') toast('Face ID cancelled',2000);
+    if(e.name === 'NotAllowedError') toast('Face ID cancelled', 2000);
     return false;
   }
 }
+
 async function tryBiometricLogin(){
- if(!selStaff) return; var hasBio=localStorage.getItem('dp3_bio_'+selStaff.id); if(!hasBio){
- var ok=await registerBiometric(selStaff.id,selStaff.name); if(ok){
- toast('✅ Face ID / Touch ID enabled! Scanning now...',2000); setTimeout(tryBiometricLogin,500);}else {
- toast('Could not enable Face ID on this device',2500);}
- return;}
- var ok=await authenticateBiometric(selStaff.id); if(ok){
- var lockKey='dp3_lock_'+selStaff.id; localStorage.removeItem(lockKey); curUser=selStaff; enterApp();}else {
- toast('Face ID failed — enter your PIN instead',2500);}
+  if(!selStaff) return;
+  var stored = localStorage.getItem('dp3_bio_' + selStaff.id);
+  if(!stored){
+    // First time - register
+    var ok = await registerBiometric(selStaff.id, selStaff.name);
+    if(ok){
+      toast('✅ Face ID set up! Scanning now...', 2000);
+      setTimeout(tryBiometricLogin, 500);
+    }
+    return;
+  }
+  var ok = await authenticateBiometric(selStaff.id);
+  if(ok){
+    localStorage.removeItem('dp3_lock_' + selStaff.id);
+    curUser = selStaff;
+    enterApp();
+  } else {
+    toast('Face ID failed — enter your PIN', 2500);
+  }
 }
+
 async function offerBiometricSetup(){
- var supported=await checkBiometricSupport(); if(!supported) return; if(!curUser) return; var already=localStorage.getItem('dp3_bio_'+curUser.id); if(already) return; // already set up
- setTimeout(function(){
- appConfirm(
- '🔐 Enable Face ID / Touch ID?',
- 'Log in faster next time using biometrics instead of your PIN.',
- async function(){
- var ok=await registerBiometric(curUser.id,curUser.name); if(ok){
- toast('✅ Biometric login enabled! Use Face ID next time.',3000);}else {
- toast('Could not enable biometric on this device.',3000);}
+  if(!curUser) return;
+  var supported = await checkBiometricSupport();
+  if(!supported) return;
+  var already = localStorage.getItem('dp3_bio_' + curUser.id);
+  if(already) return;
+  setTimeout(function(){
+    appConfirm(
+      '🔐 Enable Face ID?',
+      'Log in faster next time without entering your PIN.',
+      async function(){
+        var ok = await registerBiometric(curUser.id, curUser.name);
+        if(ok) toast('✅ Face ID enabled!', 3000);
+        else toast('Could not enable Face ID on this device', 3000);
+      }
+    );
+  }, 2500);
 }
-);},2000);}
+
+
 function openAddCustomProd(){
  if(!curUser||curUser.role==='staff'){toast('❌ Only owners can add custom products');return;}
  document.getElementById('cprodName').value=''; document.getElementById('cprodErr').textContent=''; openM('addCustomProdModal');}
@@ -1277,6 +1840,16 @@ function openCustomerProfile(encodedName){
 
   document.getElementById('custDbList').innerHTML=content;
   document.getElementById('custDbSearch').style.display='none';
+  // Add back button at bottom
+  var backDiv=document.createElement('div');
+  backDiv.style.cssText='margin-top:12px';
+  backDiv.innerHTML='<button style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--w12);background:var(--s2);color:var(--w);cursor:pointer;font-size:14px;font-weight:600">← Back to Customers</button>';
+  backDiv.querySelector('button').addEventListener('click',function(){
+    document.getElementById('custDbSearch').style.display='';
+    document.getElementById('custDbSearch').value='';
+    renderCustomerDb('');
+  });
+  document.getElementById('custDbList').appendChild(backDiv);
   // Wire edit button
   setTimeout(function(){
     var editBtn=document.querySelector('[data-editprofile]');
@@ -1530,7 +2103,7 @@ window.addEventListener('online',function(){
 });
 
 // ── PROFIT CHART ──
-function renderChart(data){}
+
 
 // ── CUSTOMER CONTACTS DB ──
 var _custContacts=JSON.parse(localStorage.getItem('dp3_custcontacts')||'{}');
@@ -1561,21 +2134,24 @@ function saveCustomer(){
   if(!name){err.textContent='Enter customer name';return;}
   _custContacts[name]={phone:phone,notes:notes,updatedAt:Date.now()};
   saveCustomerContacts();
+  // Push to Firebase immediately
+  if(_fbConnected&&_fbUrl){
+    fbXHR('PUT',_fbUrl+'/custContacts.json',_custContacts);
+    fbXHR('PUT',_fbUrl+'/lastUpdate.json',Date.now());
+  }
   closeM('addCustomerModal');
   setTimeout(function(){
     renderCustomerDb('');
-    // Show the saved customer
     var srch=document.getElementById('custDbSearch');
     if(srch) srch.value='';
   },400);
-  toast('✅ Customer saved — find them in the list');
+  toast('✅ Customer saved — syncing to all devices');
 }
 
 
 
 // ── CUSTOMER EXPORT ──
 function exportCustomerContacts(){
-  // Build full customer list
   var allNames={};
   sales.forEach(function(s){ if(s.customer&&s.customer.trim()) allNames[s.customer.trim()]=1; });
   credits.forEach(function(c){ if(c.name&&c.name.trim()) allNames[c.name.trim()]=1; });
@@ -1583,36 +2159,47 @@ function exportCustomerContacts(){
 
   var list=Object.keys(allNames).sort().map(function(name){
     var c=_custContacts[name]||{};
-    return {name:name, phone:c.phone||'', notes:c.notes||''};
+    return {name:name,phone:c.phone||'',notes:c.notes||''};
   });
 
-  if(!list.length){ toast('No customers to export'); return; }
+  if(!list.length){toast('No customers to export');return;}
 
   var withPhone=list.filter(function(c){return c.phone;});
+  var total=list.length;
 
-  // Build CSV
-  var csv='Name,Phone Number,Notes\n';
+  // Build WhatsApp-friendly contact list (works on all devices)
+  var txt='*DE PORRH & BROS — Customer Contacts*'+
+    '\n_'+total+' customers · '+withPhone.length+' with phone_\n\n';
   list.forEach(function(c){
-    csv+=c.name+','+( c.phone||'')+','+(c.notes||'')+'\n';
+    txt+=c.name+(c.phone?' — '+c.phone:' — (no phone)')+
+         (c.notes?' ('+c.notes+')':'')+
+         '\n';
   });
 
-  // Try CSV download
+  // Try CSV download first
   try{
-    var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    var csv='Name,Phone Number,Notes\n';
+    list.forEach(function(c){
+      csv+=c.name+','+c.phone+','+c.notes+'\n';
+    });
+    var blob=new Blob([csv],{type:'text/csv'});
     var url=URL.createObjectURL(blob);
     var a=document.createElement('a');
-    a.href=url;
-    a.download='customers_'+today()+'.csv';
-    document.body.appendChild(a);
-    a.click();
+    a.href=url; a.download='customers_'+today()+'.csv';
+    document.body.appendChild(a); a.click();
     setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},300);
-    toast('✅ Downloaded — '+list.length+' customers ('+withPhone.length+' with phone)',3000);
+    toast('✅ CSV downloaded — '+total+' customers',3000);
   }catch(e){
-    // Fallback: share as text
-    var txt='*DE PORRH & BROS Customers*\n\n';
-    withPhone.forEach(function(c){ txt+=c.name+': '+c.phone+'\n'; });
-    if(withPhone.length<list.length) txt+='\n_'+(list.length-withPhone.length)+' customers without phone number_';
-    openWALink('https://wa.me/?text='+encodeURIComponent(txt));
+    // iOS fallback: copy to clipboard or share via WhatsApp
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        toast('✅ Copied to clipboard — paste anywhere',3000);
+      }).catch(function(){
+        openWALink('https://wa.me/?text='+encodeURIComponent(txt));
+      });
+    } else {
+      openWALink('https://wa.me/?text='+encodeURIComponent(txt));
+    }
   }
 }
 
